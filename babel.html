@@ -107,7 +107,9 @@
 
     <div class="row well">
       <p>
-        using .babelrc for configuration and therefore minify our command line from being too long: <br/>
+        using .babelrc for configuration and therefore minify our command line from being too long. <br/>
+        When in doubt what libraries preset include we can check from babel website: <a href="http://babeljs.io/docs/plugins/preset-es2015/"> here </a><br/>
+        We see there that commonjs is default for this preset.
         <code>
         { <br/>
           "presets" : ["es2015"], <br/>
@@ -122,6 +124,42 @@
         </code>
       </p>
     </div>
+
+    <div class="row well">
+      <p>
+       Module formatters plugins can utilize multiple module or most popular specifications <br/>
+       <ul>
+         <li>CommonJS (generally followed for node js)</li>
+         <li>AMD (ansynchronous module definition) popular for ansynchronously loading of modules</li>
+       </ul>
+       Following 2 try to unify above 2 specifications in their own way. <br/>
+       <ul>
+         <li>UMD</li>
+         <li>SystemJS</li>
+       </ul>
+      Above are only specifications, and need implementations to be used in practice.  <br/>
+      Implementations of above modules can be used with babel by including these <a href="http://babeljs.io/docs/plugins/#modules">modules</a>. <br/>
+      That way es2015 can be turn into any specification format we like. <br/>
+      <br/>
+      For <b>AMD</b> environment most common is RequireJS that is included in your html and configurations and your js will be loaded by ajax when needed. Other ones are dojo toolkit and ScriptManJS.<br/>
+      For <b>CommonJS</b> environment on the server you just need to run it on Node.js since it supports this specification.<br/>
+      For <b>CommonJS</b> environment on the browser you just need to include browerify.<br/>
+      <br/>
+      To use AMD specification instead of default one commonJS, we would remove preset (that uses commonjs) and use all plugins manually that we need:<br/>
+        <code>
+        { <br/>
+          "plugins" : ["transform-es2015-block-scoping", <br/>
+                       "transform-es2015-block-literlas",<br/>
+                       "transform-es2015-modules-amd"], <br/>
+          
+          "sourceMaps": true <br/>
+        } <br/>
+        </code>
+        Now when we run babel, it would use AMD specification.<br/>
+        <br/>
+      </p>
+    </div>
+
 
 </div> <!-- container -->
 <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
