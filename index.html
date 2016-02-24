@@ -1,9 +1,54 @@
 <!DOCTYPE html>
 <html>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+<h1>Learning Babel 6 and ES6</h1>
 
-*Learning Babel : http://kangax.github.io/compat-table/es6/#babel
+<a href="http://kangax.github.io/compat-table/es6/#babel">babel compatibility table </a>
+<a href="http://babeljs.io/repl/"> babel playground </a>
+
+
+<h2>Installing babel</h2> 
+<code>
+  npm install -global babel-cli
+  babel --version
+  npm ls -g --depth 0  
+</code>
+
+installing locally is better practice:
+# installing localy so that project can be shared with other users (saved in package.json)
+# also allows to have different versions of babel per project
+# npm install would install anything as per packages.json file
+<code>
+npm init # creates package.js files
+npm install babel-cli --save-dev 
+node_modules/.bin/babel --version
+</code>
+
+install babel preset:
+<code>
+npm install babel-preset-es2015 --save-dev
+</code>
+
+<code>
+babel src # will transcode src folder with js files
+babel src --presets es2015
+babel src --presets es2015 --out-dir build #same as: (save to output directory)
+babel src --presets es2015 -d build
+
+babel src --presets es2015 --out-file build/bundle.js #same as:
+babel src --presets es2015 -o build/bundle.js
+
+babel src --presets es2015 -o build/bundle.js -s (to add source map file - good for debugging)
+babel src --presets es2015 -o build/bundle.js -s -w (to watch file for changes )
+</code>
+
+
+
+
+
+
+
+
+
 </body>
 </html>
