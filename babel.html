@@ -31,7 +31,7 @@
 </div>
   
   <div class="container">
-    <div class="well">
+    <div class="row well">
       <div class="row">
         <h1>Learning Babel 6 and ES6</h1>
       </div>
@@ -82,21 +82,22 @@
     
     <div class="row well">
       <p>
-        install babel preset: <br/>
+        install babel preset. Otherwise would not know which version to transocde to: <br/>
         <code>
         npm install babel-preset-es2015 --save-dev <br/>
         </code>
       </p>
       <p>
+        using babel preset to transcode that: <br/>
         <code>
-        babel src # will transcode src folder with js files <br/>
-        babel src --presets es2015 <br/>
-        babel src --presets es2015 --out-dir build #same as: (save to output directory)<br/> 
-        babel src --presets es2015 -d build<br/>
+        babel src --presets es2015  # this will transcode to the console all js files in this directory<br/>
         <br/>
-        babel src --presets es2015 --out-file build/bundle.js #same as: <br/>
+        babel src --presets es2015 --out-dir build #same as below: (save to output directory)<br/> 
+        babel src --presets es2015 -d build <br/>
+        <br/>
+        babel src --presets es2015 --out-file build/bundle.js #same as below: <br/>
         babel src --presets es2015 -o build/bundle.js <br/>
-        
+        <br/>
         babel src --presets es2015 -o build/bundle.js -s (to add source map file - good for debugging) <br/>
         babel src --presets es2015 -o build/bundle.js -s -w (to watch file for changes ) <br/>
         </code>
