@@ -10,28 +10,33 @@
     
   </head>
 <body>
-  <div class="container-fluid">
-    <div class="row">
-      <h1>Learning Babel 6 and ES6</h1>
-    </div>
-
-    <div class="row">
-      <a href="http://kangax.github.io/compat-table/es6/#babel">babel compatibility table </a>
-    </div>
-    <div class="row">
-      <a href="http://babeljs.io/repl/"> babel playground </a>
-    </div>
-    <div class="row well">
-
-      <h2>Installing babel</h2> 
-      <code>
-        npm install -global babel-cli <br/>
-        babel --version<br/>
-        npm ls -g --depth 0 <br/> 
-      </code>
+  <div class="container">
+    <div class="well">
+      <div class="row">
+        <h1>Learning Babel 6 and ES6</h1>
+      </div>
+      <div class="row">
+        <a href="http://kangax.github.io/compat-table/es6/#babel">babel compatibility table </a>
+      </div>
+      <div class="row">
+        <a href="http://babeljs.io/repl/"> babel playground </a>
+      </div>
     </div>
     
-    <div class="row">
+    <h2>Installing babel</h2> 
+    
+    <div class="row well">
+       <p>
+        Installing globaly
+        <code>
+          npm install -global babel-cli <br/>
+          babel --version<br/>
+          npm ls -g --depth 0 <br/> 
+        </code>
+      </p>
+    </div>
+    
+    <div class="row well">
       <p>
         installing locally is better practice:<br/>
         <ul class="list-group">
@@ -53,7 +58,8 @@
         </code>
       </p>
     </div>
-    <div class="row">
+    
+    <div class="row well">
       <p>
         install babel preset: <br/>
         <code>
