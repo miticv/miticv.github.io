@@ -78,7 +78,7 @@
       </p>
     </div>
     
-    <h2>using babel to transcode js</h2> 
+    <h2>Using babel to transcode js</h2> 
     
     <div class="row well">
       <p>
@@ -88,7 +88,7 @@
         </code>
       </p>
       <p>
-        using babel preset to transcode that: <br/>
+        using babel preset to transcode: <br/>
         <code>
         babel src --presets es2015  # this will transcode to the console all js files in this directory<br/>
         <br/>
@@ -104,6 +104,24 @@
       </p>
     </div>
 
+
+    <div class="row well">
+      <p>
+        using .babelrc for configuration and therefore minify our command line from being too long: <br/>
+        <code>
+        {
+          "presets" : ["es2015"],
+          "sourceMaps": true
+        }
+        </code>
+      </p>
+      <p>
+        now we can transcode using shorther string (ommitting: --presets es2015 -s): <br/>
+        <code>
+        babel src -o build/bundle.js <br/>
+        </code>
+      </p>
+    </div>
 
 </div> <!-- container -->
 <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
