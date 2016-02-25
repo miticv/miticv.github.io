@@ -61,8 +61,13 @@ babel src -o build/bundle.js
 
 ##Different specifications and formatters
 Module formatters plugins can utilize multiple module or most popular specifications    
-- CommonJS (generally followed for node js)   
+- CommonJS   
+  * Node.js (server)    
+  * Browserify (browser)    
 - AMD (Ansynchronous Module Definition) popular for ansynchronously loading of modules    
+  * RequireJS   
+  * Dojo Toolkit   
+  * ScriptMainJS    
 
 Following 2 try to unify above 2 specifications in their own way.     
 - UMD   
@@ -89,13 +94,39 @@ Now when we run babel, it would use AMD specification.
 
 ##Browser support
 
-*Shim* refers to any piece of code that performs interception of an API call and provides a layer of abstraction.    
-*Polyfill* is a type of shim that retrofits legacy browsers with moredn HTML/CSS/js features (browser APIs) usually usging js.    
+**Shim** refers to any piece of code that performs interception of an API call and provides a layer of abstraction.    
+**Polyfill** is a type of shim that retrofits legacy browsers with moredn HTML/CSS/js features (browser APIs) usually usging js.    
 
 ```
 npm install babel-polyfill
 ```
-babel polyfill uses core-js
+babel polyfill uses:  
+* core-js
+* Regenerator runtime
+
+###core-js
+* core-js    
+  * Scope is all of the ES5, ES6, ES7 and the future
+  * Modular   
+  * does not polute global namespace
+alternative is:
+ES Shims   
+* Scope is specific ES5 or ES6 ...  
+* not modular   
+* polute global namespace   
+
+###Regenerator runtime
+It is facebook open source 
+It has 
+* transform
+* runtime
+
+
+
+
+ 
+
+
 
 
 
