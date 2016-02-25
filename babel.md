@@ -3,7 +3,7 @@
 ([ECMAScript 6](http://es6-features.org/) aka es2015)    
 [babel compatibility table](http://kangax.github.io/compat-table/es6/#babel)     
 [babel playground](http://babeljs.io/repl/)    
-
+[browserstack](https://www.browserstack.com)
 
 ##Installing babel
 Installing globaly 
@@ -23,15 +23,15 @@ npm install babel-cli --save-dev
 node_modules/.bin/babel --version 
 ```
 
-##Using babel to transcode js
+##Using babel to transpile js
 install babel preset. Otherwise would not know which version to transocde to: 
 ```
 npm install babel-preset-es2015 --save-dev 
 ```
 
-using babel preset to transcode: 
+using babel preset to transpile: 
 ```bash
-babel src --presets es2015 # this will transcode to the console all js files in this directory
+babel src --presets es2015 # this will transpile to the console all js files in this directory
 
 babel src --presets es2015 --out-dir build   #same as below: (save to output directory)
 babel src --presets es2015 -d build 
@@ -46,14 +46,14 @@ babel src --presets es2015 -o build/bundle.js -s -w #(to watch file for changes 
 ##.babelrc
 using .babelrc for configuration and therefore minify our command line from being too long.        
 When in doubt what libraries preset include we can check from babel website: [here](http://babeljs.io/docs/plugins/preset-es2015/)    
-We see there that commonjs is default for this preset.    
+We see there that **commonjs** is default for this preset.    
 ```json
 { 
 "presets" : ["es2015"], 
 "sourceMaps": true 
 } 
 ```
-now we can transcode using shorther string (ommitting: `--presets es2015 -s`): 
+now we can transpile using shorther string (ommitting: `--presets es2015 -s`): 
 ```bash
 babel src -o build/bundle.js 
 ```
@@ -77,11 +77,11 @@ Above are only specifications, and need implementations to be used in practice.
 Implementations of above modules can be used with babel by including these [modules](http://babeljs.io/docs/plugins/#modules).   
 That way es2015 can be turn into any specification format we like.   
 
-For AMD environment most common is RequireJS that is included in your html and configurations and your js will be loaded by ajax when needed. Other ones are dojo toolkit and ScriptManJS.   
-For CommonJS environment on the server you just need to run it on Node.js since it supports this specification.   
-For CommonJS environment on the browser you just need to include browerify.   
+For **AMD** environment most common is RequireJS that is included in your html and configurations and your js will be loaded by ajax when needed. Other ones are dojo toolkit and ScriptManJS.   
+For **CommonJS** environment on the **server** you just need to run it on Node.js since it supports this specification.   
+For **CommonJS** environment on the **browser** you just need to include **browerify**.   
 
-To use AMD specification instead of default one commonJS, we would remove preset (that uses commonjs) and use all plugins manually that we need:  
+To use AMD specification instead of default one CommonJS, we would remove preset (that uses commonjs) and use all plugins manually that we need:  
 ```json
 { 
 "plugins" : ["transform-es2015-block-scoping", 
@@ -98,7 +98,7 @@ Now when we run babel, it would use AMD specification.
 **Polyfill** is a type of shim that retrofits legacy browsers with moredn HTML/CSS/js features (browser APIs) usually usging js.    
 
 ```
-npm install babel-polyfill
+npm install babel-polyfill --save
 ```
 babel polyfill uses:  
 * core-js
@@ -116,10 +116,14 @@ ES Shims
 * polute global namespace   
 
 ###Regenerator runtime
-It is facebook open source 
-It has 
-* transform
-* runtime
+It is facebook open source. It has 2 parts:    
+* transform (babel already has that)
+* runtime (babel needs this part to run it on the browser)
+
+### Make features work on browser
+
+There are 2 options. We can **Polyfill** them or we can **Transpile** them.
+
 
 
 
