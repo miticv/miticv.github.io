@@ -122,9 +122,18 @@ It is facebook open source. It has 2 parts:
 
 ### Make features work on browser
 
-There are 2 options. We can **Polyfill** them or we can **Transpile** them.
+There are 2 options. We can **Polyfill** them or we can **Transpile** them.  
+When look at babel [docs](http://babeljs.io/docs/learn-es2015/), we can see for each feature weather is supported by polyfill or transpiling.
 
 
+
+#### Polyfill
+Include libs:
+```
+npm install babel-polyfill --save
+```
+include it to the html page:
+<a href=""></a>
 
 
 
