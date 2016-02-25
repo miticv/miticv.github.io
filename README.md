@@ -1,3 +1,5 @@
 # miticv.github.io
 
-Used http://html-online.com/editor/
+Used [markdown cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)  
+
+
