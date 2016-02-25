@@ -183,9 +183,52 @@ use that plugin:
 run transpile and then it will work for IE9
 
 
+##Integrating babel in your build
 
+###npm
+npm looks at the package.json for existing scripts:
+```
+"scripts": {
+    "demo": "babel --version",
+    "build.js": "babel src -o dist"
+  }
+```
 
+###gulp
+```
+npm install gulp -g  
+npm install gulp --save-dev
+npm install gulp-babel --save-dev
+```
+create gulpfile.js:
+```js
+var gulp = require('gulp');
+var gulp = require('gulp-babel');
 
+gulp.task('default', function(){
+ return gulp.src('src/*.js')
+            .pipe(babel())
+            .pipe(gulp.dest('dist'))
+});
+```
+and run the task:
+```
+gulp
+```
+#### gulpfile.js with new version of es6
+For node verion 4 or later below updated script will just work:
+```js
+const gulp = require('gulp');
+const gulp = require('gulp-babel');
 
+gulp.task('default', ()=>{
+ return gulp.src('src/*.js')
+            .pipe(babel())
+            .pipe(gulp.dest('dist'))
+});
+```
 
+but if you run older version of node `node -v` then:
+* rename your `gulpfile.js` to `gulpfile.babel.js`   
+* run `npm install babel-core --save-dev`
 
