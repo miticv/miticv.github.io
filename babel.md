@@ -5,7 +5,6 @@
 [babel playground](http://babeljs.io/repl/)    
 
 
-
 ##Installing babel
 Installing globaly 
 ```bash
@@ -63,7 +62,7 @@ babel src -o build/bundle.js
 ##Different specifications and formatters
 Module formatters plugins can utilize multiple module or most popular specifications    
 - CommonJS (generally followed for node js)   
-- AMD (ansynchronous module definition) popular for ansynchronously loading of modules    
+- AMD (Ansynchronous Module Definition) popular for ansynchronously loading of modules    
 
 Following 2 try to unify above 2 specifications in their own way.     
 - UMD   
@@ -87,5 +86,22 @@ To use AMD specification instead of default one commonJS, we would remove preset
 } 
 ```
 Now when we run babel, it would use AMD specification.
+
+##Browser support
+
+*Shim* refers to any piece of code that performs interception of an API call and provides a layer of abstraction.    
+*Polyfill* is a type of shim that retrofits legacy browsers with moredn HTML/CSS/js features (browser APIs) usually usging js.    
+
+```
+npm install babel-polyfill
+```
+babel polyfill uses core-js
+
+
+
+
+
+
+
 
 
