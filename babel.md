@@ -187,7 +187,7 @@ run transpile and then it will work for IE9
 
 ###npm
 npm looks at the package.json for existing scripts:
-```
+```json
 "scripts": {
     "demo": "babel --version",
     "build.js": "babel src -o dist"
