@@ -133,14 +133,54 @@ Include libs:
 npm install babel-polyfill --save
 ```
 include it to the html page:
-<a href=""></a>
+```html
+<script type="text/javascript" src="../node_modules/bable-polyfill/dist/polyfill.js"></script>
+```
+
+If some feature is not supported via polyfill we have to use transpile
+
+#### Transpile
+
+```
+babel src --o dist
+```
+with .babelrc:
+```json
+{ 
+"presets" : ["es2015"],
+"plugins": []
+} 
+```
+can also run it on node to test script. Node supports commonJS:
+```
+node sometest_module.js
+```
+
+#### Older browser ES3
+
+| ES3  | ES5      |
+| ----:|:--------:|
+| IE8+ | IE9+     |
+| CH5+ | CH6-19+  |
+| FF3+ | FF4+     |
+| SF4+ | SF5-6+   |
 
 
-
- 
-
-
-
+In case of older browsers or that still have some features not working after polyfill and transpile:   
+Go to babel plugins, and for ES3 you might need plugin for example [this one](http://babeljs.io/docs/plugins/transform-es3-member-expression-literals/):
+```
+npm install babel-plugin-transform-es3-member-expression-literals --save-dev
+npm install babel-plugin-transform-es3-property-literals --save-dev
+```
+use that plugin:
+```json
+{ 
+"presets" : ["es2015"],
+"plugins": ["transform-es3-member-expression-literals",
+            "transform-es3-property-literals"]
+} 
+```
+run transpile and then it will work for IE9
 
 
 
