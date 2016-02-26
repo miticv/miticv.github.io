@@ -297,7 +297,7 @@ npm install PACKAGE@beta
 ```
 
 your package has following info (check with `npm info YOUR_PKG_NAME`):  
-```json
+```
 'dist-tags': { latest: '1.0.3', beta: '1.1.0-beta.0' },
 versions: ['1.0.1','1.0.2','1.0.3']
 ```
