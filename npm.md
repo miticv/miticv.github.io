@@ -278,9 +278,29 @@ That way you have release that matches NPM.
  `git push`   
  `npm publish`   
 
-## npm publish BETA version
+## npm publish BETA (and ALPHA) version
 
+use convention version format in package.json:    
+ `"version": "1.1.0-beta.0"`    
+npm does not support changeing beta versions so we have to do it manually
+```
+git add.
+git commit -m "beta version 0"
+git tag 1.1.0-beta.0
+git push
+git push --tags
+npm publish --tag beta 
+```
+now we can use :
+```
+npm install PACKAGE@beta
+```
 
+your package has following info (check with `npm info YOUR_PKG_NAME`):  
+```json
+'dist-tags': { latest: '1.0.3', beta: '1.1.0-beta.0' },
+versions: ['1.0.1','1.0.2','1.0.3']
+```
 
 
 
