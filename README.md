@@ -7,3 +7,7 @@ Used [markdown cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown
 
 [Babel](https://github.com/miticv/miticv.github.io/blob/master/babel.md)          
 
+[Angular Materials](https://github.com/miticv/miticv.github.io/blob/master/Angular-Material.md)
+
+
+
