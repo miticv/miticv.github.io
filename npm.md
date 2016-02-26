@@ -135,5 +135,22 @@ npm install   # will install all packages from your package.json file
   `"PACKAGE": "1.8.2"`
 
 
+##NPM updating existing packages
 
-
+```bash
+npm update   # will update all packages according to your package.json file
+```
+usually not done but you can update only your prod or dev dependencies:
+```bash
+npm update --dev   # will update "devDependencies" in your package.json file
+npm update --prod  # will update "dependencies" in your package.json file
+```
+update one dependency at the time:
+```bash
+npm update PACKAGE   # will update only package PACKAGE according to your package.json file
+```
+update one dependency at the time:
+```bash
+npm update -g           # will update ALL global dependencies
+npm update -g PACKAGE   # will update global dependency PACKAGE 
+```
