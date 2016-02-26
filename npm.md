@@ -86,6 +86,54 @@ npm i PACKAGE -g
 ```
 to view global packages you installed: `npm list -g --depth 0`
 
+##NPM removing packages
+
+```
+npm uninstall PACKAGE        # removes package from your machine (not from your "dependencies" package.json file)
+npm uninstall PACKAGE --save # removes package from your "dependencies" package.json file (cannot use -S here!)
+npm uninstall PACKAGE -g     # removes package from your global space
+```
+
+##NPM installing specific versions of packages
+
+Major.Minor.Patch
+Patch = bug fixes
+Minor = new features (existing functionality not broken)
+Major = signatures change
+
+```bash
+npm i PACKAGE                   # will install the latest version
+npm i PACKAGE@1.8.2             # will install the specific version 
+npm i PACKAGE@1.8               # will install the latest 1.8 version
+npm i PACKAGE@1                 # will install the latest 1 version
+npm i PACKAGE@">1.1.0"          # will install any version bigger than 1.1.0 version (not inclusive)
+npm i PACKAGE@">=1.1.0"         # will install any version bigger or equal 1.1.0 version
+npm i PACKAGE@">=1.1.0 <1.4.0"  # will install any version bigger or equal 1.1.0 version and less than 1.4.0
+npm i PACKAGE@">=1.1.0 <1.4.0 || .."  # you can add || (or) statement as well but this is rarelly needed
+```
+common scenarios:
+* latest `npm i PACKAGE` will add to dependencies `"PACKAGE": "^1.8.3"`      
+  package will be upgraded if author of the libraries upgrade the patch or minor version 
+* specific `npm i PACKAGE@1.8.2 --save --save-exact` will add to dependencies `"PACKAGE": "1.8.2"`      
+  package will not be upgraded. Used for mission critical apps that need testing and large teams.    
+  this work for both --save and --save-dev
+
+
+##NPM installing existing packages
+
+```bash
+npm install   # will install all packages from your package.json file
+```
+
+* tilda ~ means we want the latest version of the **minor** release:    
+  `"PACKAGE": "~1.8.2"` would install 1.8.**2**, 1.8.**3**, 1.8.**4** ...
+* carrot ^ means we want the latest version of the **major** release:    
+  `"PACKAGE": "^1.8.2"` would install 1.8.**2**, 1.8.**3**, 1.**9.1**, 1.**9.2** ...
+* star * means we want the latest version of the library:    
+  `"PACKAGE": "*"`
+* no prefix: means we want the exact varsion of the library:    
+  `"PACKAGE": "1.8.2"`
+
 
 
 
