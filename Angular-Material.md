@@ -18,7 +18,16 @@ Will be using:
 
 
 
+```
+npm install angular-material
+npm init
+npm install jspm -g
+jspm install angular-material  # no for transpiler
+npm install bower -g
+bower install angular-material
 
+
+```
 
 
 
