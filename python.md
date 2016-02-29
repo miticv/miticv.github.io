@@ -497,4 +497,54 @@ Protocol | Collections | Test
  Mutable Mapping | dict   |   
  
  
+# Exceptions
 
+```python
+import sys
+
+def convert(s):
+    try:
+        x = int(s)
+    except ValueError:
+        x = -1
+    except TypeError:
+        x = -1
+    return x
+```
+same as:
+```python
+def convert(s):
+    x = -1
+    try:
+        x = int(s)
+    except (ValueError, TypeError):
+        pass                            # pass is semantically empty code to fill the indentation 
+    return x
+```
+or:
+```python
+def convert(s):
+    try:
+        return int(s)
+    except (ValueError, TypeError) as e:
+        print("Conversion error: {}"\
+              .format(str(e)),
+              file= sys.stderr)
+        raise                            # raise error 
+```
+Do not catch `IdentationError`, `SyntaxError`, `NameError`. They are programmer errors.
+
+* IndexError  when out of bound index is called
+* ValueError object is right type, but innapropriate value
+* KeyError when loop-up in a mapping fails
+* TypeError - maybe do not use, but let program fail
+
+
+* Look Before You Leap (LBYL)
+* Easier to Ask Forgiveness than Premission (EAFP)
+
+
+```python
+
+
+```
