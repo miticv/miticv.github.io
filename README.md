@@ -20,3 +20,5 @@ ES6
 JWT
 
 Yeoman 
+
+[python](https://github.com/miticv/miticv.github.io/blob/master/python.md) and [python modules](https://github.com/miticv/miticv.github.io/blob/master/python-module.md)
