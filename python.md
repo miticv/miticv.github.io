@@ -369,8 +369,57 @@ Heterogenious:
 numbs = [1,2,3,4]
 strs = ["one", "two", "three"]
 strs[2] = 2
-  ["one", 2, "three"]              # it is heterogenious!!!
+  ["one", 2, "three"]                  # it is heterogenious!!!
+
+s = "example of split string".split()  
+s.count("of")                          # 1 => count instances of word "of"
+s[0]                                   # "example"
+s[-1]                                  # "string" negative is counting backwards
+
+del s[1]           # same things. removes the element "of" from the list
+s.remove("of")
+
+s.insert(0, "An")  # insert the element at position 0
+
+s = "example of split string".split(1:3)  # slice ["of","split","string"] .split(start,stop)
+s[1:-1]                                   # slice all exept first and last ["of","split"]
+s[2:] + s[:2]  == s                       # True
+
+copy_string = s[:]    # Copies string (shallow copy)
+copy_string is s      # False
+copy_string == s      # True
+
+copy_string = s.copy() # Copies string (shallow copy)
+copy_string = list(s)  # Copies string (shallow copy)
+
+g = [1,11,21,121,12321]
+g.reverse()
+g.sort()
+g.sort(reverse=True)
+
+y = sorted(x)
+q = reversed(p)
+
 ```
+shallow copy
+```python
+a = [[1,2],[3,4]]
+b = a[:]
+a is b    # False  
+a == b    # True  
+
+
+a[0] = [8,9]  # a is now [[8,9],[3,4]]             <= modified (new) element
+              # while b is still [[1,2],[3,4]]     <= b is still pointing to old
+
+a[1].append(5) # a  is now [[8,9],[3,4,5]]          <= appended 5
+               # while b is still [[1,2],[3,4,5]]   <= also appended!
+
+
+s = [[-1,1]] * 5
+s[3].append(7)     # now ALL elements would have [-1,1,5] because * 5 did shallow copy.
+```
+
 append
 ```python
 b = []
@@ -388,6 +437,7 @@ c = ['bear',
 ## Dictionary (mutable)
 key-value pair
 Not sorted in any particular order
+
 ```python
 phones = { ''vlad': '111-222-3336', 'ada': 222-555-6666}
 phones['vlad']                    # '111-222-3336'
