@@ -91,3 +91,11 @@ We can use that to modify library:
 ```
 Now we can safely import this function AND also use it as a script
 
+For command line arguments look at :
+* argparse  (python standard library)
+* docopt    (3rd party)
+ 
+
+
+
+
