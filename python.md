@@ -98,6 +98,7 @@ importing different ways:
     * None
     * Bool
 * Immutable (String and collections)
+    * typles
     * Strings
     * Bytes
 * Mutable (Lists)
@@ -217,7 +218,56 @@ for intem in SomeDictionary
 ## Strings and Collections (immutable)
 immutable (cannot be changed)
 
+### Tuple (immutable)
+Heterogeneous immutable
+```python
+t = ()          # empty tuple
+t = ("Vlad", 1973, 13.5)
+t[0]             # "Vlad"
+len(t)           # 3
+for item in t:
+    print(item)
+t + ("Ada")       # can add to tuple (return new one with added item)
+t * 3             # can multiply it (new one)
+
+t = (5)
+type(t)           # will be int !!!
+t = (5,)
+type(t)           # will be tuple
+```
+nested
+```python
+t = ((1,2), (2,3))
+t[0][1]              # 2
+```
+can ommit paranthesis
+```python
+p = 1,2,3,4,5,6
+```
+usefull for returning multi part result of the function:
+```python
+def minmax(list):
+    return min(list), max(list)
+lower, upper = minmax([1,2,3,4,5,6,7,8])
+```
+arbitrary :
+```python
+(a,(b,(c,d))) = (4,(3,(2,1))
+```
+constructors"
+```python
+tuple([1,2,3,4])        # (1,2,3,4)
+tuple("hello")          # ("h","e","l","l", "o")
+```
+containment
+```python
+5 in (1,2,3,4,5,6)     #True
+5 not in (1,2,3,4,5,6) #False
+```
+
 ### Strings (Immutable)
+Homogeneous immutable of unicode characters
+
 Multiline strings
 ```python
 """ this is
@@ -242,10 +292,16 @@ s = 'test 123'
 c = s[5]        #this is "1" as a one element string not character
 s.capitalize()  # this is "Test 123" - it is returned as a new string!
 ```
-Unicode
+joining
 ```python
-
+"New" + "found" + "land"         #expensive
+"".join(["New","found","land"])  #join then with empty separator string
+colors = ';'.join(['white', 'blue', 'black'])  #separator.join 'white;blue;black'
+colors.split(";")                # split them back to array
 ```
+
+"unforgetable".partition("forget")   # ('un', 'forget', 'able')
+
 
 ### Bytes (Immutable)
 Immutable 
