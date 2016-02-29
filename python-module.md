@@ -118,3 +118,108 @@ then you can run code as executable: `program.py` without: `python3 program.py`
 
 #Python Objects
 
+## Immutable
+All python objects are IMMUTABLE other than lists(arrays and dictionaries)
+```python
+x = 100
+x = 500  # creates new value and changes x pointer to new value
+y = x    # y is pointing to the same 500 value
+x = 600  # X points to 600 now, and y is still pointing to 500 !!!!
+
+id(x) == id(y)    # would be False
+x is y            # can also test it this way!
+```
+
+## pass by refference
+When calling function - arguments are ALWAYS passed as REFFERENCES
+```python
+f = [1,2,3]
+def replace(g):
+    g = [5,6,7]    # f is unchanged! g is pointing to different list now.
+
+def replace(g):
+   g[0] = 5
+   g[1] = 6
+   g[2] = 7        # now f is changed :) 
+```
+
+## pass default value
+
+Always must be specified after regular ones
+```python
+def banner(message, border='-'):
+    line = border * len(message)
+    print(line)
+    print(message)
+    print(line)
+
+banner("test message")
+banner("test message", "*")
+banner(border="*", message="test message")   # here order doesnt matter
+```
+
+default arguments are ALWAYS executed only once!
+**issue1**
+```python
+import time
+
+def show(arg=time.ctime()):  #default argument with current date time.
+    print(arg)
+
+show()
+show()         #show same time as 1st time
+show()         #show same time as 1st time
+```
+proper fix for default values should be:
+```python
+def show(arg=None):  #default argument with current date time.
+    if arg is None:
+        arg=time.ctime()
+    print(arg)
+```
+
+**issue2 with lists**
+```python
+def add_spam(menu=[]):  #default argument with empty list (created only once!)
+    menu.append("spam")
+    return menu
+breakfast = ['bacon','eggs']
+add_spam(breakfast)       #all as expected
+
+add_spam()                # this gives ['spam'] as expected 
+add_spam()                # this gives ['spam','spam'] since 
+add_spam()                # this gives ['spam','spam','spam']
+...
+```
+proper fix whould be:
+```python
+def add_spam(menu=None):  #use immutable object as argument
+    if menu is None:      #and test if it is passed
+        menu=[]
+    menu.append("spam")
+    return menu
+```
+
+## scope
+
+**issue1**
+```python
+count = 0
+
+def show_count():
+    print("count = ", count)
+
+def set_count(c):
+    count = c            #this count is NEW LOCAL variable (not global one)
+```
+fix:
+```python
+count = 0
+
+def show_count():
+    print("count = ", count)
+
+def set_count(c):
+    global count         #this tells us that to use existing (not create new local count)
+    count = c            
+```
