@@ -100,6 +100,7 @@ importing different ways:
 * Immutable (String and collections)
     * typles
     * Strings
+    * Range
     * Bytes
 * Mutable (Lists)
     * arrays
@@ -268,6 +269,9 @@ containment
 ### Strings (Immutable)
 Homogeneous immutable of unicode characters
 
+```python
+len("hey")     # 3
+```
 Multiline strings
 ```python
 """ this is
@@ -297,11 +301,51 @@ joining
 "New" + "found" + "land"         #expensive
 "".join(["New","found","land"])  #join then with empty separator string
 colors = ';'.join(['white', 'blue', 'black'])  #separator.join 'white;blue;black'
-colors.split(";")                # split them back to array
+
+```
+splitting
+```python
+colors.split(";")                                                # split them back to array
+t = "unforgetable".partition("forget")                           # ('un', 'forget', 'able')  # split in 3 partitions
+origin, _ , dest = "unforgetable".partition("-")                 # _ is used as dummy variable in Python!
+```
+format
+```python
+"The age of {0} is {1}".format('Jim', 32)    # or:
+"The age of {name} is {age}".format(name='Jim', age=32)
+
+pos = (1,2,3)
+"Position is x={pos[0]}, y={pos[1]}, z={pos[2]}".format(pos=pos)
+
+import math
+"pi={m.pi:.3f} and e={m.e.3f}".format(m=math)    # with 3 dec places
 ```
 
-"unforgetable".partition("forget")   # ('un', 'forget', 'able')
+### Range
+progression of integers
 
+```python
+range(5)           # 0,1,2,3,4  (stop)
+
+range(5,10)        # 5,6,7,8,9  (start, stop)
+list(range(3))     # [0,1,2]
+
+range(0,10,2)      # 0,2,4,6,8  (start, stop, step)
+```
+
+enumerate
+```python
+t = [3, 13, 234, 6543]   # tuple
+for p in enumerate(t):
+   print(p)              
+(0,3)
+(1,13)
+(2,234)
+(3,6543)
+
+for p in enumerate(t):                 # yealds (index, value)
+   print("i={}, v={}".format(i,v))) 
+```
 
 ### Bytes (Immutable)
 Immutable 
