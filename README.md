@@ -1,6 +1,6 @@
 # miticv.github.io
 
-Used [markdown cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)  
+Used [markdown cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)  or [here](https://guides.github.com/features/mastering-markdown/) 
 
 
 [NPM](https://github.com/miticv/miticv.github.io/blob/master/npm.md)         
