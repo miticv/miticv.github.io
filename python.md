@@ -485,3 +485,16 @@ blue_eyes.issuperset(blond_hair)    # is blond hair superset of blue eyes
 blue_eyes.isdisjoint(blond_hair)    # if 2 sets has none in common
 ```
 
+
+Protocol | Collections | Test
+------------ | -------------| -------------
+ Container| str, list, range, tuple, bytes, set, dict        |  in and not in
+ Sized    | str, list, range, tuple, bytes, set, dict        |  len(s)
+ Iterable | str, list, range, tuple, bytes, set, dict        |  iter(s), for item in iterable:
+ Sequence | str, list, range, tuple, bytes  |  item = seq[index], index = seq.index(item) num - seq.count(item), r = reversed(seq)
+ Mutable Sequence | list  |   
+ Mutable Set | set        |   
+ Mutable Mapping | dict   |   
+ 
+ 
+
