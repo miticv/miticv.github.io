@@ -54,8 +54,35 @@ Arithmentic operators
 
 ## [PEPS](https://www.python.org/dev/peps/): Zen of Python
 
-[Peps 08](https://www.python.org/dev/peps/pep-0008/#tabs-or-spaces): 4 spaces no tabs
-[Peps 20](https://www.python.org/dev/peps/pep-0020/): Zen of Python or print it with `>>> import this`
+* Beautiful is better than ugly.
+* Explicit is better than implicit.
+* Simple is better than complex.
+* Complex is better than complicated.
+* Flat is better than nested.
+* Sparse is better than dense.
+   * 2 empty lines between functions [Peps 08](https://www.python.org/dev/peps/pep-0008/#tabs-or-spaces)
+   
+* Readability counts.
+   * 4 spaces for indentation (not tabs) [Peps 08](https://www.python.org/dev/peps/pep-0008/#tabs-or-spaces)
+   
+* Special cases aren't special enough to break the rules.
+* Although practicality beats purity.
+   * avoid escape sequences and use 2 styles of quites " and '
+   
+* Errors should never pass silently.
+* Unless explicitly silenced.
+* In the face of ambiguity, refuse the temptation to guess.
+* There should be one-- and preferably only one --obvious way to do it.
+* Although that way may not be obvious at first unless you're Dutch.
+* Now is better than never.
+* Although never is often better than *right* now.
+* If the implementation is hard to explain, it's a bad idea.
+* If the implementation is easy to explain, it may be a good idea.
+* Namespaces are one honking great idea -- let's do more of those!
+
+
+ 
+[Peps 20](https://www.python.org/dev/peps/pep-0020/): Zen of Python or print it with `>>> import this`     
 
 ## Importing libraries
 
