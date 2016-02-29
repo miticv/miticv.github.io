@@ -1,5 +1,5 @@
 
-# Pythin Modules
+# Python Modules
 
 * Any **py** file is **python module**
    * module can be imported as **python library**
@@ -107,8 +107,14 @@ def some_function(arg1):
   Returns:
       explain here
   """
-  
 ```
+it can be accessed with `help(some_function)`
+For module place it at the very top
 
+```python
+#!/usr/bin/env python3
+```
+then you can run code as executable: `program.py` without: `python3 program.py`
 
+#Python Objects
 
