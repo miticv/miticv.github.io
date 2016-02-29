@@ -437,15 +437,51 @@ c = ['bear',
 ## Dictionary (mutable)
 key-value pair
 Not sorted in any particular order
+key is immutable while value can me mutable (changed)
+we can add new values
 
 ```python
-phones = { ''vlad': '111-222-3336', 'ada': 222-555-6666}
+phones = { 'vlad': '111-222-3336', 'ada': 222-555-6666}
 phones['vlad']                    # '111-222-3336'
 phones['vlad'] = '111-333-444'    # updates existing
 phones['vladimir'] = '111-333-444'# create new one if not existing
 
 e = {}              # Creates empty dictionary
+
+for key, value in phones.items():
+    print("{key} => {value}".format(key=key, value=value))
+
+del phones("vlad")
+
+from pprint inport pprint as pp
+pp(phones)
 ```
 
+## Set (mutable)
+Unorder collection of unique, immutable objects
 
+```python
+p = {1, 4, 6, 88}    # uses { same as dictionary, but without key:value format.
+e = set()            #create empty set
+
+s = set([2,23,5,2])  # will create set and remove duplicates
+2 in s               # True
+s.add(33)            # will add element 
+s.add(2)             # will NOT add because 2 exists
+s.update([2,4,323])  # add multiple elements
+
+s.remove(2)          # has to be in the set - otherwise error
+s.discard(2)         # doesnt not have to be memeber of the set.
+
+j = s.copy()         # Shallow copy
+
+#set operations
+blue_eyes.union(blond_hair)          # blue eyes OR blond hair
+blue_eyes.intersection(blond_hair)   # blue eyes AND blond hair
+blue_eyes.difference(blond_hair)     # blue eyes AND NOT blond hair
+blue_eyes.symmetric_difference(blond_hair)    # blue eyes OR blond hair but not both
+blue_eyes.issubset(blond_hair)    # is blond hair subset of blue eyes
+blue_eyes.issuperset(blond_hair)    # is blond hair superset of blue eyes
+blue_eyes.isdisjoint(blond_hair)    # if 2 sets has none in common
+```
 
