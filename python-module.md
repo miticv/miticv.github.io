@@ -95,7 +95,20 @@ For command line arguments look at :
 * argparse  (python standard library)
 * docopt    (3rd party)
  
+### Documenting code
 
+```python
+def some_function(arg1):
+  """ what it does
+  
+  Args:
+      arg1: description
+      
+  Returns:
+      explain here
+  """
+  
+```
 
 
 
