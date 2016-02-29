@@ -52,6 +52,8 @@ Arithmentic operators
    * 4 spaces for indentation (not tabs) [Peps 08](https://www.python.org/dev/peps/pep-0008/#tabs-or-spaces)
    
 * Special cases aren't special enough to break the rules.
+   * all variables are references to objects
+   * Everything in Python is object
 * Although practicality beats purity.
    * avoid escape sequences and use 2 styles of quites " and '
    
