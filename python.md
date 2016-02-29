@@ -168,6 +168,13 @@ while True:
         break
 ```
 
+```python
+for intem in SomeList
+
+for intem in SomeDictionary
+
+```
+
 ## Strings and Collections (immutable)
 immutable (cannot be changed)
 
@@ -237,6 +244,18 @@ list("test")         #becomes: ["t","e","s","t"]
 c = ['bear',
      'giraffe',
      'elephant', ]   #allowed , comma after the last element for maintainbility
+```
+
+## Dictionary (mutable)
+key-value pair
+Not sorted in any particular order
+```python
+phones = { ''vlad': '111-222-3336', 'ada': 222-555-6666}
+phones['vlad']                    # '111-222-3336'
+phones['vlad'] = '111-333-444'    # updates existing
+phones['vladimir'] = '111-333-444'# create new one if not existing
+
+e = {}              # Creates empty dictionary
 ```
 
 
