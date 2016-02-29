@@ -167,20 +167,77 @@ while True:
     if expr:
         break
 ```
-## Strings and Collections
 
+## Strings and Collections (immutable)
+immutable (cannot be changed)
 
+### Strings
+Multiline strings
+```
+""" this is
+a multi line
+string"""
+'''so this is
+also'''
+```
+escape sequences
+```
+"this one contains ' "
+'And this one contains " '
+'this one contains \' and \" '
+```
+what you see is what you get: start with: `r`
+```
+path = r'C:\some\path\no\need\for\excape\characters\here'
+```
+Pythin has no characters - only strings:
+```
+s = 'test 123'
+c = s[5]        #this is "1" as a one element string not character
+s.capitalize()  # this is "Test 123" - it is returned as a new string!
+```
+Unicode
+```
 
+```
 
+### Bytes
+Immutable 
 
+```
+data = b'binary data now'
+```
+Unicode
+```
+srpski = "дом"                    # unicode string
+data = srpski.encode("utf-8")     #To Byte
 
+serbian = data.decode("utf-8")    #To string
+serbian = srpski                  #True
+```
 
+## List (mutable)
 
-
-
-
-
-
+Heterogenious:
+```
+numbs = [1,2,3,4]
+strs = ["one", "two", "three"]
+strs[2] = 2
+  ["one", 2, "three"]              # it is heterogenious!!!
+```
+append
+```
+b = []
+b.append(1.618)
+b.append(3.14)
+```
+from list
+```
+list("test")         #becomes: ["t","e","s","t"]
+c = ['bear',
+     'giraffe',
+     'elephant', ]   #allowed , comma after the last element for maintainbility
+```
 
 
 
