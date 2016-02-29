@@ -1,7 +1,13 @@
 
 # Pythin Modules
 
-##Creating and importing modules
+* Any **py** file is **python module**
+   * module can be imported as **python library**
+   * module can be used as script (**python program**)
+   * or both (using `__name__`)
+
+
+## Creating and importing modules
 
 * Create folder pyfund
 * create file words.py
@@ -9,10 +15,14 @@
 ```python
   def fetch_words():
       w = ["one", "two", "three"]
-      for item in w:
+      print_words(w)
+
+  def print_words(list):
+      for item in list:
           print(item)
 ```
-execute it in REPL:
+execute it in REPL:     
+**import module**
 ```bash
 cd pyfind
 puthon3
@@ -21,12 +31,24 @@ puthon3
 one
 two
 three
+```
+**from module import function**
+```bash
 >>> from words import fetch_words
 >>> fetch_words
 one
 two
 three
 ```
+__from module import *__
+```bash
+>>> from words import *
+>>> fetch_words
+one
+two
+three
+```
+**from module import (fetch_words, print_words)**
 
 ## Distinguish between Import and Execution
 
