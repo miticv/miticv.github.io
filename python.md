@@ -1,17 +1,16 @@
 
 # Python 3.3
 
-from Netherland.     
-Strongly type language.     
-Dynamically typed (no check until runtime)     
-Interpretive language     
-Written in C     
-Jutjon => Java     
-IronPython => .NET     
-Pypy => RPython     
+* from Netherland.     
+* Strongly type language.     
+* Dynamically typed (no check until runtime)     
+* Interpretive language     
+* Written in C     
 
-Zen of Python     
-Python 2.7 => 3.3         
+Other flavours:
+* Jutjon => Java     
+* IronPython => .NET     
+* Pypy => RPython     
 
 ## Installation
 * python.org, download page.
@@ -29,19 +28,6 @@ _ operator
 >>> _ * 2  # _ is for last value used (in our case 5)
 10
 Ctrl+Z to exit
-```
-loop and 4 spaces (do not use tabs):
-```python
->>> for i in range(5):
-...    x = i * 10  # 4 spaces for indentation
-...    print(x)
-...
-0 
-10
-20
-30
-40
->>>
 ```
 Arithmentic operators
 * + 
@@ -104,9 +90,33 @@ importing different ways:
 ```
 
 ## Scalar types
+* Immutable (Scalar Types) 
+    * Integers 
+    * Float
+    * None
+    * Bool
+* Immutable (String and collections)
+    * Strings
+    * Bytes
+* Mutable (Lists)
+    * arrays
+    * dictionaries
 
-### Integers
+All objects in Python are immutable.
+That means is always by reference, never copy object by value.
 
+Immutable:
+```python
+x = 100
+x = 500  # creates new value and changes x pointer to new value
+y = x    # y is pointing to the same 500 value
+x = 600  # X points to 600 now, and y is still pointing to 500 !!!!
+
+id(x) == id(y)    # would be False
+x is y            # can also test it this way!
+```
+
+### Integers (Immutable)
 ```python
 >>> 10      #decimal
 10
@@ -123,7 +133,7 @@ importing different ways:
 >>> int ("10000", 3)  #convert string to base 3 number
 81
 ```
-### Float
+### Float (Immutable)
 
 ```python
 >>> 3.125
@@ -141,7 +151,7 @@ inf
 >>> float("-inf")
 -inf
 ```
-### None
+### None (Immutable)
 represent no value
 
 ```python
@@ -149,7 +159,7 @@ represent no value
 >>> a is None
 True
 ```
-### Bool
+### Bool (Immutable)
 
 ```python
 >>>bool(0)       # 0 is False
@@ -163,7 +173,7 @@ False
 >>> bool(42)     # Anything else is True
 True
 ```
-### Relational Operators
+#### Relational Operators
 
 * ==   Equal
 * !=   Not Equal
@@ -205,7 +215,7 @@ for intem in SomeDictionary
 ## Strings and Collections (immutable)
 immutable (cannot be changed)
 
-### Strings
+### Strings (Immutable)
 Multiline strings
 ```python
 """ this is
@@ -235,7 +245,7 @@ Unicode
 
 ```
 
-### Bytes
+### Bytes (Immutable)
 Immutable 
 
 ```python
