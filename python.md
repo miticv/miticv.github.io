@@ -43,6 +43,14 @@ loop and 4 spaces (do not use tabs):
 40
 >>>
 ```
+Arithmentic operators
+* + 
+* -
+* *
+* /
+* %
+* //
+
 
 ## [PEPS](https://www.python.org/dev/peps/): Zen of Python
 
@@ -106,7 +114,6 @@ inf
 >>> float("-inf")
 -inf
 ```
-
 ### None
 represent no value
 
@@ -115,7 +122,6 @@ represent no value
 >>> a is None
 True
 ```
-
 ### Bool
 
 ```python
@@ -130,7 +136,6 @@ False
 >>> bool(42)     # Anything else is True
 True
 ```
-
 ### Relational Operators
 
 * ==   Equal
@@ -140,12 +145,29 @@ True
 * <=   less or equal 
 * >=   greater than or equal
  
+### Conditional Statements
 
+If statements:
+* if True:
+* if True:    
+  else:
+* if True:    
+  elif:
 
-
-
-
-
+While loop:
+```
+c=5
+while c!= 0:
+    print(c)
+    c -= 1
+```
+Break while loop:
+```
+while True:
+    if expr:
+        break
+```
+## Strings and Collections
 
 
 
