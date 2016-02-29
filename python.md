@@ -117,7 +117,7 @@ inf
 ### None
 represent no value
 
-```Python
+```python
 >>> a = None
 >>> a is None
 True
@@ -155,14 +155,14 @@ If statements:
   elif:
 
 While loop:
-```
+```python
 c=5
 while c!= 0:
     print(c)
     c -= 1
 ```
 Break while loop:
-```
+```python
 while True:
     if expr:
         break
@@ -173,7 +173,7 @@ immutable (cannot be changed)
 
 ### Strings
 Multiline strings
-```
+```python
 """ this is
 a multi line
 string"""
@@ -181,34 +181,34 @@ string"""
 also'''
 ```
 escape sequences
-```
+```python
 "this one contains ' "
 'And this one contains " '
 'this one contains \' and \" '
 ```
 what you see is what you get: start with: `r`
-```
+```python
 path = r'C:\some\path\no\need\for\excape\characters\here'
 ```
 Pythin has no characters - only strings:
-```
+```python
 s = 'test 123'
 c = s[5]        #this is "1" as a one element string not character
 s.capitalize()  # this is "Test 123" - it is returned as a new string!
 ```
 Unicode
-```
+```python
 
 ```
 
 ### Bytes
 Immutable 
 
-```
+```python
 data = b'binary data now'
 ```
 Unicode
-```
+```python
 srpski = "дом"                    # unicode string
 data = srpski.encode("utf-8")     #To Byte
 
@@ -219,20 +219,20 @@ serbian = srpski                  #True
 ## List (mutable)
 
 Heterogenious:
-```
+```python
 numbs = [1,2,3,4]
 strs = ["one", "two", "three"]
 strs[2] = 2
   ["one", 2, "three"]              # it is heterogenious!!!
 ```
 append
-```
+```python
 b = []
 b.append(1.618)
 b.append(3.14)
 ```
 from list
-```
+```python
 list("test")         #becomes: ["t","e","s","t"]
 c = ['bear',
      'giraffe',
