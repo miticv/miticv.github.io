@@ -58,6 +58,7 @@ Arithmentic operators
    * avoid escape sequences and use 2 styles of quites " and '
    
 * Errors should never pass silently.
+   
 * Unless explicitly silenced.
 * In the face of ambiguity, refuse the temptation to guess.
 * There should be one-- and preferably only one --obvious way to do it.
@@ -540,11 +541,123 @@ Do not catch `IdentationError`, `SyntaxError`, `NameError`. They are programmer 
 * TypeError - maybe do not use, but let program fail
 
 
+
+2 phylosoplies:
 * Look Before You Leap (LBYL)
-* Easier to Ask Forgiveness than Premission (EAFP)
+  check all possible errors before you run. - bet you will miss something to check!
+* Easier to Ask Forgiveness than Premission (EAFP) <= Python
+  do not check anything. Handle error instead. 
 
 
 ```python
+try:
 
+except OSError as e:
+
+    raise
+finally:
+
+```
+
+
+# Iterables
+
+##
+
+[ expr(item) for item in iterable]
+```python
+words = "why sometimes I have belived as many as six impossible things before breakfast".split()
+
+[len(word) for word in words]    # [3,9,1,4,8,2,4,2,3,10,6,6,9]
+
+lengths = []                     #above line is the same as below:
+for word in words:
+    lengths.append(len(word))
+
+```
+[ expr(item) for item in iterable if predicate(item)]
+
+## Iteration Protocols
+
+```python
+iterable = ['1','2','3','4']
+iterator = iter(iterable)
+next(iterator)
+next(iterator)
+next(iterator)
+```
+
+## Generators
+
+```python
+def gen123():
+    yield 1
+    yield 2
+    yield 3    
+
+g = gen123()
+next(g)
+next(g)
+next(g)
+```
+good for infinite seq. 
+lazy computing
+```python
+def take(count, iterable):
+   copunter = 0
+   for item in iterable:
+       if counter == count:
+           return
+       counter += 1
+       yield item
+
+```
+example of infinite:
+```python
+def lucas():
+    yield 2
+    a = 2
+    b = 1
+    while True:
+        yield b
+        a, b = b, a+b
+  
+for x in lucas():
+    print(x)
+```
+To create generator from this:
+[ expr(item) for item in iterable]
+use brackets insead:!!
+**(expr(item) for item in iterable )**
+
+```python
+million_squares = (X*X for x in range(1,1000001))
+list(million_squares)   # looong list 
+list(million_squares)   #  [] 
+
+
+sum(X*X for x in range(1,1000001))    # very fast and efficient since it is not evaluating the list!
+```
+
+###intertools
+
+any([False, False, True])     # True
+all([False, False, True])     # False
+
+zip
+```python
+sunday = [4,3,5]
+monday = [1,2,3]
+
+for item in zip(sunday, monday):   # can accept more than 2 iterables
+    print(item)     # (4,1)
+                    # (3,2)
+                    # (5,3)
+    
+```
+chain
+```python
+from intertools import chain
+temps = chain(sunday, monday)
 
 ```
