@@ -8,37 +8,37 @@ Used [markdown cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown
 
 :small_blue_diamond: [NPM](https://github.com/miticv/miticv.github.io/blob/master/npm.md)         
 
-:small_orange_diamond: jspm
+:white_small_square: jspm
 
-:small_orange_diamond: bower
+:white_small_square: bower
 
-:small_orange_diamond: gulp
+:white_small_square: gulp
 
 :small_blue_diamond: [Babel](https://github.com/miticv/miticv.github.io/blob/master/babel.md)          
 
-:small_blue_diamond: [Angular Materials](https://github.com/miticv/miticv.github.io/blob/master/Angular-Material.md)
+:small_orange_diamond: [Angular Materials](https://github.com/miticv/miticv.github.io/blob/master/Angular-Material.md)
 
-:small_orange_diamond: Angular with Typescript
+:white_small_square: Angular with Typescript
 
-:small_orange_diamond: React
+:white_small_square: React
 
-:small_orange_diamond: Erlang
+:white_small_square: Erlang
 
-:small_orange_diamond: F#
+:white_small_square: F#
 
-:small_orange_diamond: ES6
+:white_small_square: ES6
 
-:small_orange_diamond: JWT
+:white_small_square: JWT
 
-:small_orange_diamond: Mongo DB
+:white_small_square: Mongo DB
 
-:small_orange_diamond: Yeoman 
+:white_small_square: Yeoman 
 
 :small_blue_diamond: [python](https://github.com/miticv/miticv.github.io/blob/master/python.md) and [python modules](https://github.com/miticv/miticv.github.io/blob/master/python-module.md)
 
-:small_orange_diamond: py games using python
+:white_small_square: py games using python
 
-:small_orange_diamond: php
+:white_small_square: php
 
 
 
