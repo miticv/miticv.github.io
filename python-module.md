@@ -532,7 +532,7 @@ newdir\bin\activate
 ### distutils
 `python setup.py install`
 
-### [easy_install](pypi.python.prg/pypi)
+### [easy_install](pypi.python.prg/pypi) aka "cheeseshop"
 
 ```
 pyvenv newdir
