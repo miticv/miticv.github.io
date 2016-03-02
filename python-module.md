@@ -308,7 +308,7 @@ exclude duplicate code into base class
 
 sample abstract class:
 It would error out if you call num_seats():
-```
+```python
 class Aircraft:
     
    def num_seats(self):
@@ -330,13 +330,13 @@ open() to open file:
 * mode: read/write/append, binary/text
 * encoding: what kind - better explicit (different system might use different)
 
-```
+```python
 f = open('somefile.txt', mode='wt', encoding='utf-8')
 f.write(...)
 f.close()
 
 f = open('somefile.txt', mode='rt', encoding='utf-8')
-f.read(32)      # number of characters
+f.read(32)      # number of characters (or bytes if byte file)
 f.read()        # read remaining file
 f.seek(0)       # go to begening
 f.readline()    # read line, if at the end would return empty string
@@ -348,8 +348,134 @@ f.writelines(["line1\n", "line2"])                      # should add \n to each 
 f.close()
 ```
 
+```python
+import sys
 
+def main(filename):
+   f = open('somefile.txt', mode='rt', encoding='utf-8')
+   for line in f:
+       sys.stdout.write(line)     # instead of print() which adds extra new line
+   f.close()
+   
+```
+use try finally to always close file!!
+with-block
+```python
+with open('somefile.txt', mode='rt', encoding='utf-8') as f:
+     return [ int(line.strip())] for line in f]
+# now there is no need to manually close the file :) 
+```
 
+## binary files
 
+```python
+with open(flename, 'wb')  as bmp:
+  bmp.write(b'BM')
+  pixel_bookmark = bmp.tell()                 #
+  bmp.write(b'\x00\x28')
+  bmp.write(bytes((c,c,c,0)))                 # Blue Green Red Zero
+  eof_bookmark = bmp.tell()
+  
+  bmp.seek(pixel_bookmark)
+  bmp.write(_int32_to_bytes(eof_bookmark))
+  
+def _int32_to_bytes(i)
+    return bytes(( i & oxff, 
+                   i >> 8 & 0xff,
+                   i >> 16 & 0xff,
+                   i >> 24 & 0xff))
+```
 
+file-like objects
+```python
+def words_per_line(flo):
+    return [len(line.split()) for line in flo.readlines()]
 
+from urllib.request import urlopen
+with urlopen('') as web_file:
+    wp = words_per_line(web_file)
+
+with open('somefile.txt', mode='rt', encoding='utf-8') as real_file:
+    wp = words_per_line(real_file)
+```
+
+Create objects that can use with-block:
+
+```python
+from contextlib import closing
+
+class Fridge:
+    def open(self):
+    
+    def take(self, food):
+    
+    def close(self):
+    
+#now can use following:
+with closing(Fridge()) as r:
+    r.open()
+    r.take(food)    # which will close door even if take raise exception!
+```
+
+# Unit Test
+
+unittest
+TestCase
+fixtures
+assertions
+
+```python
+import unittest
+
+def analyze_text(filename):
+     with open(filename, 'r') as f:
+         return(sum(1 for _ in f)
+
+class TextAnalysisTests(unittest.TestCase):
+
+    def setUp(self):
+        self.filename = 'testfile.txt'
+        with open(self.filename, 'w') as f:
+            f.write('some test line\n'
+                    'another line\n' )
+    def tearDown(self):
+        try:
+            os.remove(self.filename)
+        except:
+            pass
+        
+    def test_function_runs(self):
+        analyze_text(self.filename)                       # basic smoke test: does the function run?
+
+    def test_line_count(self):
+        self.assertEqual(analyze_text(self.filename), 2)  # make sure line count equal is correct
+
+    def test_no_such_file(self):
+        with self.assertRaises(IOError):                  # make sure that IOError raises
+            analyze_text('foobar')
+
+if __name == '__main__':
+    unittest.main()                                       # will run all the test cases if run file.py
+```
+
+PDB is command line tool debugger (like GBD)
+
+```python
+import pdb
+pdb.set_trace()
+
+# c continue
+```
+```
+run code with `$ python3 -m pdb program.py` 
+where     # call stack
+next
+next
+print x   # can print expression or variables
+cont      # let it run
+^C        # stop program - return control to debugger
+list      # to show source code of that line where we stopped
+return    # return from current function
+quit      # exit debugger
+```
+to enter break point go to that point and type `import pdb; pdn.set_trace()`
