@@ -328,9 +328,25 @@ class Boing777(Aircraft):      # this is how we  declare base class!
 open() to open file:
 * file: filename
 * mode: read/write/append, binary/text
-* encoding: what kind
+* encoding: what kind - better explicit (different system might use different)
 
+```
+f = open('somefile.txt', mode='wt', encoding='utf-8')
+f.write(...)
+f.close()
 
+f = open('somefile.txt', mode='rt', encoding='utf-8')
+f.read(32)      # number of characters
+f.read()        # read remaining file
+f.seek(0)       # go to begening
+f.readline()    # read line, if at the end would return empty string
+f.readlines()   # read lines in the array of strings
+f.close()
+
+f = open('somefile.txt', mode='at', encoding='utf-8')   #append
+f.writelines(["line1\n", "line2"])                      # should add \n to each to match readlines() but dont have to
+f.close()
+```
 
 
 
