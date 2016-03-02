@@ -1,42 +1,44 @@
 # miticv.github.io
 
-Used [markdown cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)  or [here](https://guides.github.com/features/mastering-markdown/) 
+########## Used [markdown cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)  or [here](https://guides.github.com/features/mastering-markdown/) 
 
 
 
-[NPM](https://github.com/miticv/miticv.github.io/blob/master/npm.md)         
 
-jspm
 
-bower
+:small_blue_diamond: [NPM](https://github.com/miticv/miticv.github.io/blob/master/npm.md)         
 
-gulp
+:small_orange_diamond: jspm
 
-[Babel](https://github.com/miticv/miticv.github.io/blob/master/babel.md)          
+:small_orange_diamond: bower
 
-[Angular Materials](https://github.com/miticv/miticv.github.io/blob/master/Angular-Material.md)
+:small_orange_diamond: gulp
 
-Angular with Typescript
+:small_blue_diamond: [Babel](https://github.com/miticv/miticv.github.io/blob/master/babel.md)          
 
-React
+:small_blue_diamond: [Angular Materials](https://github.com/miticv/miticv.github.io/blob/master/Angular-Material.md)
 
-Erlang
+:small_orange_diamond: Angular with Typescript
 
-F#
+:small_orange_diamond: React
 
-ES6
+:small_orange_diamond: Erlang
 
-JWT
+:small_orange_diamond: F#
 
-Mongo DB
+:small_orange_diamond: ES6
 
-Yeoman 
+:small_orange_diamond: JWT
 
-[python](https://github.com/miticv/miticv.github.io/blob/master/python.md) and [python modules](https://github.com/miticv/miticv.github.io/blob/master/python-module.md)
+:small_orange_diamond: Mongo DB
 
-py games using python
+:small_orange_diamond: Yeoman 
 
-php
+:small_blue_diamond: [python](https://github.com/miticv/miticv.github.io/blob/master/python.md) and [python modules](https://github.com/miticv/miticv.github.io/blob/master/python-module.md)
+
+:small_orange_diamond: py games using python
+
+:small_orange_diamond: php
 
 
 
