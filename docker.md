@@ -15,7 +15,7 @@ VMWare:
 
 Container: (same as VM with shared OS instead)
 * one physical server
-* on **one OS**
+* on **one OS** (docker)
 * contains many secure containers
 * which run its own app
 
