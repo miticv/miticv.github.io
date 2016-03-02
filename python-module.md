@@ -116,7 +116,7 @@ For module place it at the very top
 ```
 then you can run code as executable: `program.py` without: `python3 program.py`
 
-#Python Objects
+# Python Objects
 
 ## Immutable
 All python objects are IMMUTABLE other than lists(arrays and dictionaries)
@@ -223,3 +223,117 @@ def set_count(c):
     global count         #this tells us that to use existing (not create new local count)
     count = c            
 ```
+
+
+# Classes
+By convention class names use CamelCase
+
+create "airtravel.py":
+```python
+class Flight:
+    pass
+
+from airtravel import Flight
+f = Flight()
+type(f)
+```
+with single function
+```python
+class Flight:
+    def number(self):
+        return "SN060"
+
+from airtravel import Flight
+f = Flight()
+f.number()            # "SN060"
+Flight.number(f)      # same thing but very rarely used
+```
+with initialization:
+```python
+class Flight:
+    def __init__(self, number):   # configures an object Flight that already exist when this is called (as opposed to constructor)
+        self._number = number     # _ as a private 
+
+    def number(self):
+        return self._number
+
+from airtravel import Flight
+f = Flight("SN060")
+f.number()            # "SN060"
+```
+Initializers:
+Private protected and public: in Pythin EVERYTHING is public!
+underscore does not hide implementation variable, it is consent
+useful when debuging
+
+Class Invariants
+```python
+class Flight:
+    def __init__(self, number, aircraft):   
+        if not number[:2].isalpha():
+            raise ValueError("No Airline code in '{}'".format(number))
+        if not number[:2].isupper():
+            raise ValueError("Invalid Airline code in '{}'".format(number))
+        if not number[2:].isdigit() and int(number[:2] <= 9999):
+            raise ValueError("Invalid route number '{}'".format(number))
+        
+        self._number = number   
+        self._aircraft = aircraft
+
+    def number(self):
+        return self._number
+
+    def airline(self):
+        return self._number[:2]
+    
+    def aircraft_model(self):
+        return self._aircraft.model()   # calls model from subclass
+                                        # Complex is better than complicated
+    
+from airtravel import Flight
+f = Flight("SN060")
+f.number()            # "SN060"
+```
+Functions are sometime appropriate without classes
+"tell () dont ask (what is the state)"
+
+Polymprphism - object fitness determined at the time of use
+James Whitcomb Riley:
+"When i see a bird that walks like a duck and swims like a duck and quacks like a duck, I call that bird a duck."
+
+Python uses polimorhism by default. And it will succeed if fits on runtime
+
+Inheritance
+exclude duplicate code into base class
+
+sample abstract class:
+It would error out if you call num_seats():
+```
+class Aircraft:
+    
+   def num_seats(self):
+       rows, row_seats = self.seating_plan()   ## this class does not have seating_plan() therefore is ABSTRACT
+       return len(rows) * len(row_seats)
+       
+       
+class AirbusA319(Aircraft):      # this is how we  declare base class!
+    ....
+     
+class Boing777(Aircraft):      # this is how we  declare base class!
+    ....
+```
+
+# Files and Resource Management
+
+open() to open file:
+* file: filename
+* mode: read/write/append, binary/text
+* encoding: what kind
+
+
+
+
+
+
+
+
