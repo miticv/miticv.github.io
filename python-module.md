@@ -458,6 +458,7 @@ if __name == '__main__':
     unittest.main()                                       # will run all the test cases if run file.py
 ```
 
+# Debugging
 PDB is command line tool debugger (like GBD)
 
 ```python
@@ -479,3 +480,68 @@ return    # return from current function
 quit      # exit debugger
 ```
 to enter break point go to that point and type `import pdb; pdn.set_trace()`
+
+# Packaging
+
+## Virtual environment
+light-weight self contain Python installation - no need for admin rights 
+python3.3-pyvenv verify by command line `pyvenv`
+If you dont have it you can use [virtualenv](pypi.python.org/pypi/virtualenv/)
+```
+pyvenv newdir
+newdir\bin\activate
+(newdir) >
+```
+dustutils
+```
+mkdir palindrome
+# put your files 'pylindrome.py' in it
+cd palindrome
+```
+create setup.py
+```
+from distutils.core import setup
+setup(
+    name='palyndrome',
+    version='1.0',
+    py_modules=['palindrome'],
+    
+    #metadata
+    author=,
+    author_email=,
+    description=,
+    license=,
+    keywords=,
+)
+```
+create  env:
+```
+pyvenv newdir
+newdir\bin\activate
+(newdir) > python setup.py sdist --format zip     # install distributon file OR 
+(newdir) > python setup.py install                # install our package!
+...
+(newdir) > cd ..
+(newdir) > python
+>>> import palindrome
+>>> palindrome.__file__    # shows location (make sure it is not your directory but python site-packages folder
+```
+
+## install 3rd parties
+
+### distutils
+`python setup.py install`
+
+### [easy_install](pypi.python.prg/pypi)
+
+```
+pyvenv newdir
+newdir\bin\activate
+(newdir) > wget https://bootstrap.pypa.io/ez_setup.py
+(newdir) > python ez_setup.py     
+(newdir) > eazy_install pip
+(newdir) > pip install nose                              # nose testing tool
+(newdir) > nosetests palindrome.py 
+```
+
+
