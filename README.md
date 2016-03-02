@@ -34,7 +34,7 @@ Used [markdown cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown
 
 :white_small_square: Yeoman 
 
-:small_orange_diamond: [python](https://github.com/miticv/miticv.github.io/blob/master/python.md) and [python modules](https://github.com/miticv/miticv.github.io/blob/master/python-module.md)
+:small_blue_diamond: [python](https://github.com/miticv/miticv.github.io/blob/master/python.md) and [python modules](https://github.com/miticv/miticv.github.io/blob/master/python-module.md)
 
 :white_small_square: py games using python
 
