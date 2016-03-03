@@ -69,9 +69,29 @@ ALSO:
 * OpenStack Magnum 
 
 
+# Setting up Docker:
 
 
+* Download and install Oracle VM Virtual Box Manager
+* Download ubuntu iso (or CentOS)
+* Follow instruction to set it up on [pluralsight](https://app.pluralsight.com/player?course=docker-deep-dive&author=nigel-poulton&name=docker-deep-dive-m3&clip=3&mode=live) 
+ 
+Install Docker:
+* Docker Client (sends command to deamon)
+* Docker Demon (creates containers)
+* They both get downloaded and installed as a single package
+* They can talk on same machine or over network
 
+
+```
+sudo su                       # pain in the bottom. so make sure you are admin first
+cd                            # 
+service docker.io status      # check if it is install or running
+uname -a                      # check kernel version (min of 3.8, even better 3.10 it is number after Linux ubanutu1404-04 #.#.#)
+apt-get update                # sync packages from source
+apt-get install -y docker.io  # install docker
+service docker.io status      # check if it is install or running (now it should)
+```
 
 
 
