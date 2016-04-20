@@ -304,7 +304,36 @@ versions: ['1.0.1','1.0.2','1.0.3']
 
 
 
+#ISSUES
+
+**>npm run typings install**      
+gets error:  
+typings ERR! message Unable to read typings for "es6-shim". You should check the path is correct    
+typings ERR! caused by Unable to connect to      "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/6697d6f7dadbf5773cb40ecda35a76027e0783b2/es6-shim/es6-shim.d.ts"
+typings ERR! caused by self signed certificate in certificate chain      
+
+**>npm install typings --global**     
+npm ERR! not a package C:\WORK\angular-2-first-look\files\storyline-tracker\typings
+npm ERR! addLocal Could not install C:\WORK\angular-2-first-look\files\storyline-tracker\typings
+npm ERR! Windows_NT 6.1.7601
+npm ERR! argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Users\\vmitic\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js" "install" "typings" "--global"
+npm ERR! node v4.4.3
+npm ERR! npm  v3.7.3
+npm ERR! path C:\Users\vmitic\AppData\Local\Temp\npm-10632-cc2f6080\unpack-1c4e052d\package.json
+npm ERR! code ENOENT
+npm ERR! errno -4058
+npm ERR! syscall open
+
+npm ERR! enoent ENOENT: no such file or directory, open 'C:\Users\vmitic\AppData\Local\Temp\npm-10632-cc2f6080\unpack-1c4e052d\package.json'
+npm ERR! enoent ENOENT: no such file or directory, open 'C:\Users\vmitic\AppData\Local\Temp\npm-10632-cc2f6080\unpack-1c4e052d\package.json'
+npm ERR! enoent This is most likely not a problem with npm itself
+npm ERR! enoent and is related to npm not being able to find a file.    
+npm ERR! enoent    
 
 
+**>npm install -g express**    
+**>npm install -d**    
+**>npm install typings**    
+**>npm start**    
 
 
