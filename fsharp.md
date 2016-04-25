@@ -110,3 +110,13 @@ printfn "Car has %d passengers" car.passengerCount
 car.passengerCount <- 2
 printfn "Car has %d passengers" car.passengerCount
 ```
+
+#INHERITANCE and CASTS
+
+```
+:>  //cast toward base class
+:?> //cast down to derived class
+```
+
+
+
