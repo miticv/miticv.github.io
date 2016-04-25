@@ -57,9 +57,31 @@ module calc3 =   //must use = when multiple modules in the same file
 
 #CLASSES and ENUMS
 
+enum type:
 ```
-type Car(color: string) =                                 //class declaration
-   new() = Car("red")
+type CarType = 
+   | Tricar = 0
+   | StandardFourWHeeler = 1
+   | HeavyLoadCarrier = 2
+   | WierdContraption = 3
+   | CrazyMonster = 4
+```
+```
+type Car(color: string, wheelCount: int) =               //class declaration
+   do                                                    //check parameters and raise exceptions
+      if wheelCount < 3 then 
+         failwith "how come?!"
+      if wheelCount > 99 then
+        failwioth "ridicilous"
+
+   let carType = 
+      match wheelCount with
+      | 3 -> CarType.Tricar 
+      | 4 -> CarType.StandardFourWHeeler
+      | 6 -> CarType.HeavyLoadCarrier
+      | x when x %2 = 1 -> CarType.WierdContraption
+      | _ -> CarType.CrazyMonster
+   new() = Car("red")                                     //SECONDARY constructor without parameters!
    member x.Move() = printg "The %scar is moving" color   //x is SELF reference! You can use self instead also
 
 let car = Car()
