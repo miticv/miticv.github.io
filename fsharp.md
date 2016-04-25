@@ -1,4 +1,6 @@
 
+F# is hybrid supporting clases while being functional language also!
+
 # VALUES
 no variables but values (they cannot be changed at runtime (immutable)!)
 ```
@@ -44,12 +46,27 @@ module calc
 let add x y = x + y
 ```
 ```
-namespace calcs
+namespace calcs  //must use namespace when multiple modules in the same file
 module calc2 =   //must use = when multiple modules in the same file
   let add x y = x + y
   let square x = x * x
   
-module calc3 =
+module calc3 =   //must use = when multiple modules in the same file
    let mult x 7 = x * y
 ```
+
+#CLASSES and ENUMS
+
+```
+type Car(color: string) =                                 //class declaration
+   new() = Car("red")
+   member x.Move() = printg "The %scar is moving" color   //x is SELF reference! You can use self instead also
+
+let car = Car()
+car.Move()
+
+let gcar = Car("green")
+gcar.Move()
+```
+
 
