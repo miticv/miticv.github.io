@@ -35,3 +35,21 @@ let add5and3 = add 5 3
 let result= add (aquare 12) 7
 ```
 
+#MODULES
+like static class. 
+First file is default runnable module. If have more files, you have to maintain order of files in your project!   
+You can have multiple modules per file. But module cannot span across files.
+```
+module calc
+let add x y = x + y
+```
+```
+namespace calcs
+module calc2 =   //must use = when multiple modules in the same file
+  let add x y = x + y
+  let square x = x * x
+  
+module calc3 =
+   let mult x 7 = x * y
+```
+
