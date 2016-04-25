@@ -81,8 +81,8 @@ type Car(color: string, wheelCount: int) =               //class declaration
       | 6 -> CarType.HeavyLoadCarrier
       | x when x %2 = 1 -> CarType.WierdContraption
       | _ -> CarType.CrazyMonster
-   new() = Car("red")                                     //SECONDARY constructor without parameters!
-   member x.Move() = printg "The %scar is moving" color   //x is SELF reference! You can use self instead also
+   new() = Car("red")                                                  //SECONDARY constructor without parameters!
+   member x.Move() = printg "The %s car (%A) is moving" color carType  //x is SELF reference! You can use self instead also
 
 let car = Car()
 car.Move()
@@ -91,4 +91,22 @@ let gcar = Car("green")
 gcar.Move()
 ```
 
+#MUTABLE
+create mutible properties as getter and setter
 
+```
+let mutable m = 10
+m <- 20
+```
+getter and setter:
+```
+type Car
+   let mutable passengerCount = 0
+   
+   member x.passengerCount with get() = passengerCount and set v = passengerCount <- v
+   
+let car = Car()
+printfn "Car has %d passengers" car.passengerCount
+car.passengerCount <- 2
+printfn "Car has %d passengers" car.passengerCount
+```
