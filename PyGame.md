@@ -1,9 +1,9 @@
 #PyGame
 Uses SDL (Simple DirectMedia Layer) which wraps OpenGl or DirectX    
 
-PyGame only support 32 bit version of Python (not 64bit version)   
+
 * http://www.python.org/download/    
-Then get latest PyGame:
+PyGame only support 32 bit version of Python (not 64bit version). So install 32bit pygame. Then get latest PyGame tht match above python version:
 * https://bitbucket.org/pygame/pygame/downloads     
 Choose IDE     
 * VS + PTVS (Python Tool for VS)
