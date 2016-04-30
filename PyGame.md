@@ -9,4 +9,10 @@ Choose IDE
 * VS + PTVS (Python Tool for VS)
 http://pytools.codeplex.com
 * PyCharm from JetBrains
-http://www.jetbrains.com/pycharm/download
+http://www.jetbrains.com/pycharm/download            
+Then get inspired with resources:
+* http://www.pygame.org/wiki/resources             
+Use simple editor:
+* paint.net         
+Or sound editor:
+* audacity          
