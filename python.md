@@ -402,6 +402,14 @@ y = sorted(x)
 q = reversed(p)
 
 ```
+Don’t Add to or Delete from a List while Iterating Over It
+```
+#but you can loop over its copy while removing originals:
+for food in foods[:]:  # [:] makes copy of foods
+  if(sometest()):
+    foods.remove(food)   # this is fine since removes from different list than is looping
+```
+
 shallow copy
 ```python
 a = [[1,2],[3,4]]
