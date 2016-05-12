@@ -73,8 +73,10 @@ ALSO:
 
 
 * Download and install Oracle VM Virtual Box Manager
+name it as "ubuntu1604", with recommended settings.
+In settings, under Network, go to Adapter 2, enable it, and attached to: "Hosty-only Adapter", and under storage add downloaded ubuntu server ISO. Then click Start :) []
 * Download ubuntu iso (or CentOS)
-* Follow instruction to set it up on [pluralsight](https://app.pluralsight.com/player?course=docker-deep-dive&author=nigel-poulton&name=docker-deep-dive-m3&clip=3&mode=live) 
+* Follow instruction to set it up on [pluralsight](https://app.pluralsight.com/player?course=docker-deep-dive&author=nigel-poulton&name=docker-deep-dive-m3&clip=3&mode=live)                 
  English> instal Ubanty Server >location>keybord>eth0 > name: "ubunty14"> user/pass >no (encripting home dir) > timezone >
 use entire disk as VM > select partision > write changes: yes > use 80% of the partition just in case > proxy none >automatic updates: no > check OpenSSH server >GRUB imnstall: OK
 
