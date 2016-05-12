@@ -2,7 +2,7 @@
 
 # Docker
 
-# What are containers
+## What are containers
 
 VMWare: 
 * physical server
@@ -71,17 +71,43 @@ ALSO:
 
 # Setting up Docker:
 
-
-* Download and install Oracle VM Virtual Box Manager
-name it as "ubuntu1604", with recommended settings.
-In settings, under Network, go to Adapter 2, enable it, and attached to: "Hosty-only Adapter", and under storage add downloaded ubuntu server ISO. Then click Start :) []
 * Download ubuntu iso (or CentOS)
-* Follow instruction to set it up on [pluralsight](https://app.pluralsight.com/player?course=docker-deep-dive&author=nigel-poulton&name=docker-deep-dive-m3&clip=3&mode=live)                 
- English> instal Ubanty Server >location>keybord>eth0 > name: "ubunty14"> user/pass >no (encripting home dir) > timezone >
-use entire disk as VM > select partision > write changes: yes > use 80% of the partition just in case > proxy none >automatic updates: no > check OpenSSH server >GRUB imnstall: OK
+* Download and install Oracle VM Virtual Box Manager
+```
+name it as "ubuntu1604", with recommended settings.
+In settings, under Network, go to Adapter 2, enable it, and attached to: "Hosty-only Adapter"
+Under storage add downloaded ubuntu server ISO. 
+Then click Start
+[]
+```
 
+* Follow instruction to set it up on [pluralsight](https://app.pluralsight.com/player?course=docker-deep-dive&author=nigel-poulton&name=docker-deep-dive-m3&clip=3&mode=live)  
+```
+English
+Instal Ubanty Server 
+location
+keybord
+eth default one 
+name: "ubuntu1604"
+"Vladimir Mitic"
+user: "vlad"
+pass: "password" 
+no (encripting home dir) 
+timezone
+Partitioning method: use entire disk and set up LVM 
+select partition 
+write changes: yes 
+use 80% of the partition just in case 
+proxy none 
+no automatic updates
+check OpenSSH server 
+GRUB boot loader install: OK
 
-Install Docker:
+HOST KEY: right Control
+
+```
+
+Install Docker Engine:
 * Docker Client (sends command to deamon)
 * Docker Demon (creates containers)
 * They both get downloaded and installed as a single package
@@ -89,10 +115,10 @@ Install Docker:
 
 
 ```
-sudo su                       # pain in the bottom. so make sure you are admin first
+sudo su                       # pain in the butt: so make sure you are admin first
 cd                            # 
 service docker.io status      # check if it is install or running
-uname -a                      # check kernel version (min of 3.8, even better 3.10 it is number after Linux ubanutu1404-04 #.#.#)
+uname -a                      # check kernel version (min of 3.8, even better 3.10 it is number after Linux ubanutu1604-04 #.#.#)
 apt-get update                # sync packages from source
 apt-get install -y docker.io  # install docker
 service docker.io status      # check if it is install or running (now it should)
