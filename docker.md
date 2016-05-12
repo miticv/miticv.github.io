@@ -117,12 +117,35 @@ Install Docker Engine:
 ```
 sudo su                       # pain in the butt: so make sure you are admin first
 cd                            # 
-service docker.io status      # check if it is install or running
+service docker status      # check if it is install or running
+# for me it was not
 uname -a                      # check kernel version (min of 3.8, even better 3.10 it is number after Linux ubanutu1604-04 #.#.#)
 apt-get update                # sync packages from source
 apt-get install -y docker.io  # install docker
-service docker.io status      # check if it is install or running (now it should)
+service docker status         # check if it is install or running (now it should)
+
+ls -l /run                    # shows that runs as root under group "docker"
+                              # which means user has to be root or under "docker" group to run docker command
+ls -l /run | docker.sock      # or this is above give too long result
+
 ```
+Now let try run iteractive ubuntu container with /bin/bash as start up:
+```
+docker run -it ubuntu /bin/bash
+```
+we can add current user to the docker group so dont have to run under "sudo su":
+```
+cat /etc/group                #check user groups 
+sudo gpasswd -a vlad docker   #command to add a user to a group
+                              #long off and log on!!!!!!!! so that cache get cleared
+```
+now we can start this under "vlad" user account:
+```
+docker run -it ubuntu /bin/bash
+root@e30eb40f82d9:/# exit         # exit command exts and terminates our container!
+```
+
+
 
 
 
