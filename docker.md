@@ -132,6 +132,9 @@ ls -l /run | docker.sock      # or this is above give too long result
 Now let try run iteractive ubuntu container with /bin/bash as start up:
 ```
 docker run -it ubuntu /bin/bash
+root@e30eb40f82d9:/# exit         # exit command exts and terminates our container!
+
+exit                              # let also exit the root account to vlad account
 ```
 we can add current user to the docker group so dont have to run under "sudo su":
 ```
