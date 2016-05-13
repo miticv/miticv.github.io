@@ -241,14 +241,13 @@ docker images fedora              # list all local fedora images
 docker images --tree              # shows hierarchy
 docker ps                         # list of containers running
 docker ps -a                      # list of containers running and ran before
-#Ctrl+P+Q to exit without terminating it
 ```
 They are stored under: /var/lib/docker/<storage driver> (eufs or )
 ls -l /var/lib/docker/aufs/layers    # can walk down the tree of layers of the image structure
 ls -l /var/lib/docker/aufs/diff/     # lists all 
 ls -l /var/lib/docker/aufs/diff/HASH # lists all directory structure under that layer
 
-Images are layered (example) done by union mounts:
+Images are layered (example) done by **union mounts**:
 - bootfs (short lived lightweight starting container)
 - ubuntu (base) UUID abc
 - nginx  (web)  UUID def
@@ -258,8 +257,39 @@ Images are layered (example) done by union mounts:
 
 ##Docker Containers
 Container is running instance of the image.
+*************
+One process per container! If that process terminate = container will stop running too
+We CAN run more than one, but against simplicity
 
-docker run -it ubuntu /etc/bash   # to lunch container
+We start container (not boot container) since container is a process running under docker host.
+```
+docker run -it ubuntu /etc/bash                          # to lunch container
+###########################################Ctrl+P+Q to exit without terminating it
+docker stop HASH          
+docker start HASH   
+docker restart HASH 
+docker attach HASH  (to PID 1 aka init)(all processes are child of this PID)        
+
+docker kill -s <signal>
+
+docker run -d ubuntu16.04 /etc/bash -c "ping 8.8.8.8 -c 30"   # detached in background
+docker ps
+docker top HASH  # list processes within that container 
+
+docker run --cpu-shares=256                     #
+docker run memory=1g                            #
+docker inspect HASH
+docker attach HASH
+
+docker info            # how many containers and images we are hosting
+ls -l /var/lib/docker/containers # will list all the containers
+docker rm HASH         # delete container!!! (not running one, has to stop it first)
+docker rm -f HASH      # with force!!
+
+alias dps="docker ps" # put it in your bash file to load on starting
+
+```
+
 
 ##Docker Registries and Repos
 
@@ -288,6 +318,10 @@ tar -tf /tmp/fridge.tar      # look under tar structure
 
 docker load -i /tmp/fridge.tar
 docker run -it fridge /bin/bash
-``
+```
 so you can have one base image and 100s containers on top of it
+
+
+
+
 
