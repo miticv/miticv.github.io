@@ -26,7 +26,7 @@ AWS services Docker OS engine ubauntu
 `docker start web`
 
 
-# What is Docker
+## What is Docker
 dotCloud originaly now docker inc. (dock worker british language) (solomon hike) 
 * [open source](https://github.com/docker/docker) (apache license 2.0)
 * [Docker Hub](https://hub.docker.com/) is public docker registry where you can store and get images
@@ -147,8 +147,31 @@ now we can start this under "vlad" user account:
 docker run -it ubuntu /bin/bash
 root@e30eb40f82d9:/# exit         # exit command exts and terminates our container!
 ```
+docker details:
+```
+docker -v
+docker version
+docker info
+```
 
+# talk through network
+clone VM.
+VM1: (server)
+```
+netstat -tlp         # show network listeners on this box
+service docker stop  # stop existing docker service
+ifconfig             # get IP address (under ) in my case is:
+docker -H 192.168.56.50:2375 -d &
+netstat -tlp
+                     # ourlocal client would listen on network 
+docker info          # would give erorr since local client is listening to internal socket
+                     # to enable deamon to listen to both network port AND socket run:
+docker -H 192.168.56.50:2375 -H unix:///var/run/docker.sock -d &
+```
+VM2: (client)
+```
+export DOCKER_HOST="tcp://192.168.56.50:2375"     # nowe ANYONE can connect to the deamon
+export DOCKER_HOST=                               # to clean it up - now it is socket (only root or the docker group)
 
-
-
+```
 
