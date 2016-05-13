@@ -259,7 +259,9 @@ Images are layered (example) done by **union mounts**:
 Container is running instance of the image.
 *************
 One process per container! If that process terminate = container will stop running too
-We CAN run more than one, but against simplicity
+We CAN run more than one, but against simplicity, check:
+phusion/baseimage  - it is ubuntu with full multi process feel
+Inside container there is PID1 (and others) and outside you dont see PID1
 
 We start container (not boot container) since container is a process running under docker host.
 ```
@@ -323,5 +325,27 @@ so you can have one base image and 100s containers on top of it
 
 
 
+#Low level info
+```
+docker ps
+docker inspect HASH    # NetworkingSettings.IPAddress
 
+docker inspect HASH | grep Pid
+# instead of attach:
+nsenter -m -u -n -p -i -t 1293 /bin/bash  #mount name space, utf, network, process, ipc, target pid
+# when exit it is still running
+#or simplier way:
+docker_enter HASH 
+
+docker exec -it HASH /bin/bash  #start new terminal
+docker run -v /usr/local/bin:/target vmitic/nsenter  # quickest way to install nsenter. WOuld copy nsenter container to user start command
+
+
+```
+
+## building from Dockerfile
+
+```
+
+```
 
