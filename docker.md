@@ -344,8 +344,11 @@ docker run -v /usr/local/bin:/target vmitic/nsenter  # quickest way to install n
 ```
 
 ## building from Dockerfile
+instead of docker commit command
+everything beneath Dockerfile root folder structure get included in the build!!
 
 ```
+# comment line
 
 ```
 
