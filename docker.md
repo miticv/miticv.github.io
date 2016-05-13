@@ -204,4 +204,90 @@ export DOCKER_HOST=                               # to clean it up - now it is s
 
 ```
 
+#Play around
+
+```
+docker run -it centos /bin/bash    #spin centos container from ubuntu
+exit
+docker ps -a                       # list what used to run here
+ls -l /var/lib/docker/aufs/diff/   # lists all 
+ls -l /var/lib/docker/aufs/diff/HASH   # lists all 
+                                   # you can view files inside container!!
+docker start HASH
+docker attach HASH                 # you are now inside container same as starting it
+                                   
+
+```
+
+#DOCKER components
+
+Docker engine     = shipping yard  (aka Docker Daemon, Docker runtime)
+Docker images     = manifests
+Docker containers = shipping containers
+
+##Docker Engine
+Installing it provides environment infrastructure.
+Can run on laptop, cloud, servers, vms etc.
+
+##Docker Images
+List everything in container and how to build it.
+To launch container we need an image.
+```
+docker run -it fedora /bin/bash   # we are getting fedore image from docker hub
+docker pull fedora                # download newest image
+docker pull -a fedora             # download all fedora images
+docker pull -a coreos/etcd        # download all coreos/etcd images
+docker images fedora              # list all local fedora images
+docker images --tree              # shows hierarchy
+docker ps                         # list of containers running
+docker ps -a                      # list of containers running and ran before
+#Ctrl+P+Q to exit without terminating it
+```
+They are stored under: /var/lib/docker/<storage driver> (eufs or )
+ls -l /var/lib/docker/aufs/layers    # can walk down the tree of layers of the image structure
+ls -l /var/lib/docker/aufs/diff/     # lists all 
+ls -l /var/lib/docker/aufs/diff/HASH # lists all directory structure under that layer
+
+Images are layered (example) done by union mounts:
+- bootfs (short lived lightweight starting container)
+- ubuntu (base) UUID abc
+- nginx  (web)  UUID def
+- updates       UUID ghi (higher levels always win if conflicts)
+- writeable layer  :only one that is writeable! when running if we change anything it is written in there!
+ 
+
+##Docker Containers
+Container is running instance of the image.
+
+docker run -it ubuntu /etc/bash   # to lunch container
+
+##Docker Registries and Repos
+
+Registry is https://hub.docker.com/
+Repo for Fedora, Ubuntu, CentOS, Coreos, radial/nginx
+http://registry.docker.com
+
+## copying images
+```
+docker run ubuntu /bin/bash -c "echo 'cool content'" > /tmp/cool-file
+docker ps -a
+docker commit HASH fridge    
+docker images                # now this is the latest
+docker history fridge        # show command used to create image
+docker save -o /tmp/fridge.tar fridge   # copying fridge image (.tar is optional)
+ls -lh /tmp/fridge.tar
+```
+lets copy it to centos
+```
+tar -tf /tmp/fridge.tar      # look under tar structure 
+# for each layer we would have:
+#HASH/
+#HASH/VERSION/
+#HASH/json
+#HASH/layer.tar
+
+docker load -i /tmp/fridge.tar
+docker run -it fridge /bin/bash
+``
+so you can have one base image and 100s containers on top of it
 
