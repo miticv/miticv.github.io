@@ -74,14 +74,13 @@ ALSO:
 * Download ubuntu iso (or CentOS)
 * Download and install Oracle VM Virtual Box Manager
 ```
-name it as "ubuntu1604", with recommended settings.
+name it as "ubuntu1604"/"Centos7", with recommended settings.
 In settings, under Network, go to Adapter 2, enable it, and attached to: "Hosty-only Adapter"
 Under storage add downloaded ubuntu server ISO. 
 Then click Start
-[]
 ```
 
-* Follow instruction to set it up on [pluralsight](https://app.pluralsight.com/player?course=docker-deep-dive&author=nigel-poulton&name=docker-deep-dive-m3&clip=3&mode=live)  
+Ubuntu:
 ```
 English
 Instal Ubanty Server 
@@ -106,6 +105,16 @@ GRUB boot loader install: OK
 HOST KEY: right Control
 
 ```
+CentOS:
+```
+English
+Installation Destination (default)
+Software Delection: GNOME Desktop
+Network Hostname: enable both
+root password: "password"
+user creation: "vlad" "password"
+```
+
 
 Install Docker Engine:
 * Docker Client (sends command to deamon)
@@ -113,21 +122,39 @@ Install Docker Engine:
 * They both get downloaded and installed as a single package
 * They can talk on same machine or over network
 
-
+CentOS (has newer docker version, and better(faster) file system: devicemapper)
+``` 
+yum install -y docker            #install docker
+systemctl status docker.service  # check if running
+systemctl start docker.service   # start if not
+```
+Ubuntu (file system is AUFS)
 ```
 sudo su                       # pain in the butt: so make sure you are admin first
 cd                            # 
-service docker status      # check if it is install or running
+service docker status         # check if it is install or running
 # for me it was not
 uname -a                      # check kernel version (min of 3.8, even better 3.10 it is number after Linux ubanutu1604-04 #.#.#)
 apt-get update                # sync packages from source
 apt-get install -y docker.io  # install docker
 service docker status         # check if it is install or running (now it should)
+```
 
+#UPDATE Docker (BACK UP before update docker)
+Ubuntu
+```
+wget -qO- https://get.docker.com/gpg | apt-key add -
+echo deb http://get.docker.com/ubuntu docker main > /etc/apt/sources.list.d/docker.list
+apt-get update
+apt-get install lxc-docker
+docker -v
+```
+
+```
 ls -l /run                    # shows that runs as root under group "docker"
                               # which means user has to be root or under "docker" group to run docker command
 ls -l /run | docker.sock      # or this is above give too long result
-
+ps -elf                       # check what is running
 ```
 Now let try run iteractive ubuntu container with /bin/bash as start up:
 ```
@@ -144,7 +171,8 @@ sudo gpasswd -a vlad docker   #command to add a user to a group
 ```
 now we can start this under "vlad" user account:
 ```
-docker run -it ubuntu /bin/bash
+docker run -it ubuntu /bin/bash   # span ubuntu container
+docker run -it centos /bin/bash   # span centos container
 root@e30eb40f82d9:/# exit         # exit command exts and terminates our container!
 ```
 docker details:
@@ -161,6 +189,7 @@ VM1: (server)
 netstat -tlp         # show network listeners on this box
 service docker stop  # stop existing docker service
 ifconfig             # get IP address (under ) in my case is:
+cat /etc/hosts      # or like this
 docker -H 192.168.56.50:2375 -d &
 netstat -tlp
                      # ourlocal client would listen on network 
@@ -174,4 +203,5 @@ export DOCKER_HOST="tcp://192.168.56.50:2375"     # nowe ANYONE can connect to t
 export DOCKER_HOST=                               # to clean it up - now it is socket (only root or the docker group)
 
 ```
+
 
