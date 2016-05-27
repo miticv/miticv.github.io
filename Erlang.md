@@ -19,3 +19,9 @@ variables can start with an underscore ('_') too, but by convention their use is
 ```
 
 ## Atom
+Start with lower case    
+Can start with capital, or contain _ or @ if you enclose it inside qiotes (')    
+```
+>atom = 'atom'.
+atom
+```
