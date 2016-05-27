@@ -42,3 +42,4 @@ Can start with capital, or contain _ or @ if you enclose it inside qiotes (')
 >atom = 'atom'.
 atom
 ```
+rebar3 new app rebarDemo
