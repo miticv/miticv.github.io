@@ -18,6 +18,8 @@ Used [markdown cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown
 
 :small_orange_diamond: [Angular Materials](https://github.com/miticv/miticv.github.io/blob/master/Angular-Material.md)
 
+:small_orange_diamond: [Angular 2](https://github.com/miticv/miticv.github.io/blob/master/Angular2.md)
+
 :white_small_square: Angular with Typescript
 
 :white_small_square: React
