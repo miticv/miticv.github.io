@@ -237,4 +237,23 @@ FirstOrDefault() <= will ALWAYS go to database to find result
 Find()  <= will look in memmory and if not found then go to Database
 
 
+### updates
+
+```
+//update
+ var samurai = _context.Samurais.First();
+  samurai.Name += " Mitic";
+  _context.SaveChanges();
+  
+ //batch update (single sql command)
+   var samurais = _context.Samurais.ToList();
+   samurais.ForEach(s=>s.Name += ".");
+  _context.SaveChanges();
+  
+  //batch update + insert (single sql command)
+   var samurai = _context.Samurais.First();
+  samurai.Name += " Mitic";
+  _context.Samurais.Add(new Samurai { Name = "Ada"});
+  _context.SaveChanges();
+```
 
