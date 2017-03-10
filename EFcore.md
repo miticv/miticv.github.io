@@ -223,7 +223,7 @@ var vlads = context.Samurais.Where(s=>s.Name == "Vlad").ToList();
 var query = context.Samurais; //it will execute when enumerating it, or when calling toList() or other LINQ calls.
 //be carefull of doing operations inside foreach - because that cause connection to be open!!!
 //instead get results to list, then on list do foreach.
-``
+```
 
 make one context in the class:
 ```
@@ -296,6 +296,21 @@ var samurais = _context.Samurais.FromSql("EXEC FilterSamuraiByNamePart {0}", nam
 
 ExecuteSqlCommand() - return int (rows affected). can use output parameters, does not run inside transaction
 ```
+var affected = _context.Database.ExecuteSqlCommand(
+                "update samnurais set Name=REPLACE(Name, 'San', 'Nan')");
+Console.WriteLine($"Affected rows {affected}");
+```
+or with SP:
+```
+var procResult = new SqlParameter
+{
+  ParameterName = "@procResult",
+  SqlDbType = SqlDbType.VarChar,
+  Direction = ParameterDirection.Output,
+  Size = 50
+  };
+  
+_context.Database.ExecuteSqlCommand("exec SomeStoredProcName @procResult OUT", procResult);
+Console.WriteLine($"SP Result: {procResult.Value}");
 
 ```
-
