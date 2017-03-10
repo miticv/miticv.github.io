@@ -273,6 +273,29 @@ _context.SaveChanges();             //send only primary key value to delete it
 //can use stored proc to delete also
 ```
 
+## call raw SQL
 
+```
+var samurais = _context.Samurais.FromSql("Select * from Samurais").ToList();
+var samurais = _context.Samurais.FromSql("Select * from Samurais")
+                .OrderByDescending(s => s.Name).ToList();                  //do sql sorting (not client side)
+var samurais = _context.Samurais.FromSql("Select * from Samurais")
+                .OrderByDescending(s => s.Name)
+                .Where(s=>s.Name.Contais("ad")                             //do sql filtering (not client side)
+                .ToList();
+```
 
+## call Stored Procedures
+
+```
+var namePart = "ad";
+var samurais = _context.Samurais.FromSql("EXEC FilterSamuraiByNamePart {0}", namePart)
+              .OrderByDescending(s => s.Name)    //// order by is now applied on the result in memmory not on sql server!
+              .ToList();
+```
+
+ExecuteSqlCommand() - return int (rows affected). can use output parameters, does not run inside transaction
+```
+
+```
 
