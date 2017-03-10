@@ -3,6 +3,8 @@
 for .net core 1.1 (supports project.json)
 `dotnet` shows you .net core version, and `dotnet --version` shows you version of SDK you installed
 
+## Creating Models and create Databases
+
 Extensions used:
 Add New File
 Open Command Line
@@ -70,8 +72,6 @@ That way can track changes done on the database (in source controll also)
 dotnet ef --startup-project ../CoreUI database update
 ```
 
-
-
 Script-Migration
 ```
 Script-Migration
@@ -88,6 +88,6 @@ which ranges are scripted
 update-database -verbose
 ```
 
-
+## Mapping and Migrations
 
 
