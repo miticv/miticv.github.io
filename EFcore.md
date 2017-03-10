@@ -216,5 +216,25 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     }
 ```
 
+Get list of objects:
+```
+var samurais = context.Samurais.ToList();
+var vlads = context.Samurais.Where(s=>s.Name == "Vlad").ToList();
+var query = context.Samurais; //it will execute when enumerating it, or when calling toList() or other LINQ calls.
+//be carefull of doing operations inside foreach - because that cause connection to be open!!!
+//instead get results to list, then on list do foreach.
+``
+
+make one context in the class:
+```
+public static SamuraiContext _context = new SamuraiContext()
+
+var samurai = _context.Samurais.Where(s=>s.Name == "Vlad").ToList();
+```
+
+First() Single() and Last() throw exception if no result
+FirstOrDefault() <= will ALWAYS go to database to find result
+Find()  <= will look in memmory and if not found then go to Database
+
 
 
