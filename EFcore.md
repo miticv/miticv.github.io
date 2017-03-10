@@ -84,4 +84,45 @@ update-database -verbose
 
 ## Mapping and Migrations
 
+### Many to Many
+*:* (many to many) not supported in EF Core 1.1, only way is to create DomainClass that map both classes together
+SamuraiBattle
+
+```
+public partial class SamuraiBattle
+    {
+        public int BattleId { get; set; }    //we will create join key
+        public int SamuraiId { get; set; }
+
+        public virtual Battle Battle { get; set; }
+        public virtual Samurai Samurai { get; set; }
+    }
+```
+add fluent API in the context class: (that way we are not express db schema in the domain classes)
+```
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<SamuraiBattle>(entity =>
+            {            
+                entity.HasKey(e => new { e.BattleId, e.SamuraiId })
+                    .HasName("PK_SamuraiBattle");               
+            });
+```
+use migration
+```
+add-migration JoinTable
+```
+
+### One to One
+
+primary is foregin key
+required is not nullable
+
+
+
+
+
+
+
+
 
