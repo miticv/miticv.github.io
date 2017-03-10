@@ -50,9 +50,9 @@ Add references to SamuraiApp.Domain and SamuraiApp.Data
 dotnet ef --startup-project ../CoreUI
 ```
 has options for:
-database - drop - update
-dbcontext  -
-migrations - add  - list - remove - script
+*database* - drop - update
+*dbcontext*  -
+*migrations* - add  - list - remove - script
 
 ```
 dotnet ef --startup-project ../CoreUI migrations add init
