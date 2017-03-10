@@ -118,6 +118,65 @@ add-migration JoinTable
 primary is foregin key
 required is not nullable
 
+Create new class "SecretIdentity"
+```
+    public partial class SecretIdentity
+    {
+        public int Id { get; set; }
+        public string RealName { get; set; }
+        public Samurai SamuraiId { get; set; }
+
+        public int SamuraiId { get; set; }   <===========
+    }
+```
+update Samurai class
+```
+public partial class Samurai
+    {
+        public Samurai()
+        {
+            Quotes = new List<Quote>();
+        }
+
+        public int Id { get; set; }
+        public string Name { get; set; }
+
+        public ICollection<Quote> Quotes { get; set; }
+        public ICollection<SamuraiBattle> SamuraiBattle { get; set; }
+        public SecretIdentity SecretIdentity { get; set; }     <===========
+    }
+```
+and add requirements
+```
+model.Builder.Entity<Samurai>.Property(s=>s.SecretIdentity).IsRequired();
+```
+migrate it
+```
+add-migration SecretIdentity
+```
+It will clreate new migration object. It creates cascade delete on one to one relationship also!
+now lets update the schema
+
+####Snapshot
+Every time you add the migration, it will update the snapshot
+Snapshot is fluent way to describe the model, it is not migration code at all!
+- If you make change and you were not happy - you can `remove migration` to remive last migration file and update snapshot accordingly
+So do not just delete migration file, it will mess up the snapshopt, always use `remove migration` command instead
+-If you updated the database, `remove migration` will not touch the database. you need to call `update database` command that will call drop method
+- If you made change to the model, added a migration, `remove migration` will not fix the model - only snapshot and migration file
+
+```
+dotnet ef migrations remove --startup-project ../CoreUI
+```
+
+Migrations
+```
+script-migration  //creates scripts
+script-migration -idempotent //also runs to all migrations, but check history table to know which update to run
+script-migration -from JoinTable -to SecretIdentity  // from means from next one after JoinTable!!
+script-migration -from init
+update-database -verbose  // will create latest script in memmory and execute to the database
+```
 
 
 
