@@ -66,6 +66,10 @@ dotnet ef --startup-project ../CoreUI migrations add init
 init will create Migrations folder with init.cs file and contextModel snapshot
 That way can track changes done on the database (in source controll also)
 
+```
+dotnet ef --startup-project ../CoreUI database update
+```
+
 
 
 Script-Migration
