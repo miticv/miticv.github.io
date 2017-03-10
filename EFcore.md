@@ -178,10 +178,43 @@ script-migration -from init
 update-database -verbose  // will create latest script in memmory and execute to the database
 ```
 
+### scafolding
+is creating model from existing database
 
+```
+dotnet ef dbcontext scaggold "conn string" provider --startup-project ../CoreUI
+```
 
+## Interacting with EF Core Model
 
+EFCore uses: Mictosoft.Extensions.Logging.ILoggerProvider (that is generic for all loggers across core)
 
+```
+var samurai = new Samurai {Name = "Vlad"};
+using (var context = new SamuraiContext()){
+  context.GetService<ILoggerFactory>().AddProvider(new MyLoggerProvider());
+  context.Samurais.Add(samurai);
+  //context.Add(samurai); //or can add it like this
+  context.SaveChanges();
+}
+
+//for logging you can add in OnConfiguring to show parameters during logging
+optionsBuilder.EnableSensitiveDataLogging(); 
+
+```
+
+## Batch command saving
+```
+context.Samurais.AddRange(new List<Samurai> {samurai, samurai2 });
+//we can change maxBatchSize - default is 100, so if more it will group them in batches of 100.
+//to change:
+protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+      optionsBuilder.UseSqlServer(
+        "Server = (localdb)\\mssqllocaldb; Database = SamuraiData; Trusted_Connection = True; ", 
+        options => options.MaxBatchSize(30));
+    }
+```
 
 
 
