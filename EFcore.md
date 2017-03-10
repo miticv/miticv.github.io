@@ -51,15 +51,15 @@ dotnet ef --startup-project ../CoreUI
 ```
 has options for 
 database
--- drop
--- update  === 2
+- drop
+- update  2
 dbcontext 
---
+-
 migrations
--- add     === 1
--- list
--- remove
--- script
+- add    1
+- list
+- remove
+- script
 ```
 dotnet ef --startup-project ../CoreUI migrations add init
 ```
