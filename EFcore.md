@@ -257,3 +257,22 @@ Find()  <= will look in memmory and if not found then go to Database
   _context.SaveChanges();
 ```
 
+### Disconnected updates
+websites or APIs - Design short-lived DbContext! (create them in controller for example, so it is new for each request)
+
+
+### Deleting 
+DbContext can only delete object it is aware of (already tracking)
+
+```
+_context.Samurais.Remove(samurai);  //find it and then delete it.
+_context.SaveChanges();             //send only primary key value to delete it
+
+//why there is no delete(int) like it is in Find(int)?
+//it is coming
+//can use stored proc to delete also
+```
+
+
+
+
