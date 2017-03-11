@@ -370,3 +370,34 @@ private static void EagerLoadFilteredManyToManyAkaChildrenGrandchildren() {
 with 
 
 
+# DbSet is a Repository
+
+### Generic Repositories 
+GetAll, FindById, Insert, Update, Delete. for each type of entity (POCO generator, UnitOfWork PAtterns, 
+Limit quieryng 
+EF ofthen needed in client
+Complicates testing
+
+Reusability is bad idea because you loose richness of DbContext
+Do not wrap DbContext with unit of work.
+
+### Explicit Persistance Classes
+Separation of Concerns
+More Testable
+
+### Exposing IQueryable vs IEnumerable? (return query or result)
+
+For generic repository you do not have choice since you do not even know the type to filter od sort
+Queryable you expose LINQ or Entity, and it becomes wild west.
+=> bigger project  = IEnumerable is better 
+
+DI = dependency inection
+Inversion Of Control = is better since caller tell which 
+
+
+
+
+
+
+
+
