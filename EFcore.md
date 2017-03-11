@@ -314,3 +314,59 @@ _context.Database.ExecuteSqlCommand("exec SomeStoredProcName @procResult OUT", p
 Console.WriteLine($"SP Result: {procResult.Value}");
 
 ```
+
+
+##Inserting data
+
+```
+private static void AddManyToManyWithFks()
+    { _context=new SamuraiContext();
+      var sb = new SamuraiBattle {SamuraiId = 1, BattleId = 1};
+      _context.SamuraiBattles.Add(sb);
+      _context.SaveChanges();
+    }
+
+    private static void AddManyToManyWithObjects() {
+      _context = new SamuraiContext();
+      var samurai = _context.Samurais.FirstOrDefault();
+      var battle = _context.Battles.FirstOrDefault();
+      _context.SamuraiBattles.Add(
+       new SamuraiBattle { Samurai = samurai, Battle = battle });
+      _context.SaveChanges();
+    }
+```
+
+Eager with include with 2 sql calls:
+```
+private static void EagerLoadWithInclude() {
+      _context = new SamuraiContext();
+      var samuraiWithQuotes = _context.Samurais.Include(s => s.Quotes).ToList();
+    }
+```
+
+```
+private static void EagerLoadManyToManyAkaChildrenGrandchildren() {
+      _context = new SamuraiContext();
+      var samuraiWithBattles = _context.Samurais
+        .Include(s => s.SamuraiBattles)
+        .ThenInclude(sb => sb.Battle).ToList();
+    }
+    
+private static void EagerLoadFilteredManyToManyAkaChildrenGrandchildren() {
+      _context = new SamuraiContext();
+      var samuraiWithBattles = _context.Samurais
+        .Include(s => s.SamuraiBattles)
+        .ThenInclude(sb => sb.Battle)
+        .Where(s=>s.Name== "Kyūzō").ToList();
+    }
+
+  private static void EagerLoadWithMultipleBranches() {
+      _context = new SamuraiContext();
+      var samurais = _context.Samurais
+        .Include(s => s.SecretIdentity)
+        .Include(s => s.Quotes).ToList();
+    }    
+```
+with 
+
+
