@@ -20,3 +20,10 @@ plus can combine js and css together also
 
 * Webpack uses NPM not bower
 * Webpack uses all 3 module systems (AMD, CommonJs and EcmaScript) 
+
+## CLI basics
+
+(node has to be installed)
+```
+npm install webpack -g
+```
