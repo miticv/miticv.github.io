@@ -1,5 +1,5 @@
 #Webpack
-Alternative to using gulp or grunt
+https://github.com/joeeames/WebpackFundamentalsCourse
 
 ## Why Build Client side apps
 * Multiple web request (combine fles)
@@ -45,7 +45,7 @@ index.html
 we can run it also by just `webpack` if we have config file:
 ```
 module.exports = {
-  entry: "",
+  entry: "./app.js",
   output: {
     filename: ""
   },
@@ -65,6 +65,29 @@ we can run without iframe and with automatic reloading:
 webpack-dev-server --inline
 ```
 
+### Multiple files
+app.js add `require("./login");`
+or add config file as array:
+```
+entry: ["./login", "./app.js"],
+```
+
+### using loaders
+that is how webpack learns new tricks
+* add CS6 (babble) and hinting (jshint)
+package.json added:
+```
+  "devDependencies": {
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.0",
+    "babel-preset-es2015": "^6.24.0",
+    "jshint": "^2.9.4",
+    "jshint-loader": "^0.8.4",
+    "node-libs-browser": "^2.0.0",
+    "webpack": "^2.2.1"
+
+  }
+```
 
 
 
