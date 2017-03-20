@@ -387,8 +387,34 @@ supports multiple inheritance too
 }
 ```
 mixin
+repitable sections (functions)
+```
+@mixin font-large {
+   font: {
+     size: 14px;
+     family: san-serif;
+     weight: bold;
+   }
+}
+#form {
+  @include font-large;
+}
+```
+parametirezed:
+```
+@mixin rounded-corners-all($size: 5px) {   //5px is default value
+     border-radius: $size;
+    -moz-border-radius: $size;
+    -webkit-border-radius: $size;
+}
+
+#form
+{
+   @include rounded-corners-all(5px);
+   @include rounded-corners-all;    // use default value
+}
+```
+functions
 ```
 
-
 ```
-
