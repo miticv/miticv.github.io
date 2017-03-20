@@ -360,5 +360,35 @@ Nested properties
 }
 ```
 
+## Directives
 
+import
+```
+@import "foo.scss"; //embeds in result
+@import "foo";
+@import "foo.css";
+//nested import:
+#main{
+  @import "colors";
+}
+
+```
+extend
+supports multiple inheritance too
+```
+.button {
+  color: Black;
+}
+
+.submit-button {
+   @extend .button;     //copy styles from .button
+   @extend a:hover;     // inherit from any rule
+   border: 1px Black solid;
+}
+```
+mixin
+```
+
+
+```
 
