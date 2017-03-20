@@ -414,7 +414,64 @@ parametirezed:
    @include rounded-corners-all;    // use default value
 }
 ```
-functions
+functions (has return value)
+```
+$app-width: 900px;
+@funxtion column-width($cols) {
+   @return ($app-width / $cols) - ($cols * 5px);
+}
+
+.col2 {
+  width: column-width(2);
+}
+.col3 {
+  width: column-width(3);
+}
+```
+### Control Directives
+it is all creating fixed CSSs *not* dynamic ones according to screen size (responsive style)
+
+@if
+```
+h1 {
+  @if $size > 14px {
+    color: Blue;
+  }
+  @else if $size < 14px {
+    color: Red;
+  }
+  @else {
+    color: Green;
+  }
+}
+```
+@for
+```
+$page-width: 1000px;
+@for $col from 1 through 4 {
+  .col#{$col} {
+    width: $page-width / $col;
+  }
+}
+```
+@each
+```
+@each $item in first, second, third, fourth {
+  .#{$item} {
+    background-url: url(/images/#{$item}.jpg);
+  }
+}
+```
+@while
+```
+$i: 1;
+@while $i < 5 {
+ h#{$i} {
+    font-size: $i * 4px;
+    $i: $i + 1;
+ }
+}
 ```
 
-```
+
+
