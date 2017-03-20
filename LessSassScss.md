@@ -1,4 +1,9 @@
 
+css is valid less (less uses variables, operations, mixins (functions) with guards)
+Sass is 
+
+
+
 # Why CSS is painfull
 
 ## Color Problem
@@ -159,5 +164,79 @@ type guards
 #form {
 .width(50%); //uses 2nd overload
 }
+
+```
+## Nested rules
+using hierarchies
+```
+nav {
+  font-size:14px;
+  ul {                           //makes "nav ul {...}"
+    list-style-type: none;
+    li{                          //makes "nav ul li {...}"
+      float: left;
+      margin: 2px;
+    }
+  }
+}
+```
+Combinator
+```
+a {
+ text-decoration: none;
+ &:hover {
+  text-decoration: underline;
+ }
+}
+```
+
+# Namespaces
+not emmmited in css but easier to manage
+```
+#my-forms{
+ .set-button {
+  font-size: 14px;
+  text-align: center;
+ }
+}
+
+#submit-button {
+ #my-forms > .set-button;
+}
+```
+## Scoping
+
+```
+@size: 24px;  
+#form {
+   @size: 18px;
+   
+   .button {
+     font-size: @size; //18px;
+   }
+}
+
+```
+
+## String interpolation
+
+```
+@root: "/images/";
+
+#form {
+   background: url("@{root}background.jpg");   //becomes url("/images/background.jpg");
+}
+
+```
+## Using JavaScript
+embed JS using backquote: `
+```
+@root: "/images/";
+@app-root: `"@{root}".toUpperCase()`;
+
+#form {
+   background: url("@{app-root}background.jpg");   //becomes url("/IMAGES/background.jpg");
+}
+
 
 ```
