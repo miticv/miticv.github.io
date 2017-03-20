@@ -133,3 +133,31 @@ use overloads:
   .color(#888, 20%); // uses 2nd overload since we use 2 parameters
 }
 ```
+using guards:
+```
+.color(@color) when (alpha(@color) >= 50%){
+  color: Black;
+}
+
+.color(@color) when (alpha(@color) < 50%){
+  color: transparent;
+}
+
+#form {
+  .color(@mainColor);  // will use 1st or 2nd overload depending on its alpha %
+}
+```
+type guards
+```
+.width(@size) when (isnumber(@size)) {
+ width: @size * 2;
+}
+.width(@size) when (ispercentage(@size)) {
+ width: @size;
+}
+
+#form {
+.width(50%); //uses 2nd overload
+}
+
+```
