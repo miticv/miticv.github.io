@@ -322,4 +322,43 @@ $name: "my-class";
    color: Blue;
 }
 ```
+## Rules
+nesting:
+```
+nav {
+  font-size:14px;
+  ul {                           //makes "nav ul {...}"
+    list-style-type: none;
+    li{                          //makes "nav ul li {...}"
+      float: left;
+      margin: 2px;
+    }
+  }
+}
+```
+parent selector:
+```
+a {
+ text-decoration: none;
+ &:hover {
+  text-decoration: underline;
+ }
+}
+```
+Nested properties
+```
+.button {
+  font:  {
+    family: Verdana, Helvetica, sans-serif;
+    size: 14px;
+  }
+}
+//Results in:
+.button {
+  font-family: Verdana, Helvetica, sans-serif;
+  font-size: 14px;
+}
+```
+
+
 
