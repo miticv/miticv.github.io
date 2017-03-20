@@ -254,7 +254,25 @@ embed JS using backquote: `
 
 
 # SASS (and SCSS)
+Semantically Awesome Style Sheet
+It has 2 syntaxes
+* SASS based on indention (not readable)
+* CSCC better than above
+Supported on server side (not client side) (node, .net etc)
+* Chirpy
+* nuget (CassAndCoffee)
 
+## Variables
+
+```
+$myColor: #ffeedd;  //case sensitive, they are constants!!
+
+#a: Black;  //Color
+#b: 4px;    //Units
+#c: 1.0em;  //Units
+#f: Helvetica, sans serif;  //Lists
+#border: 1px #000 Solid 0 0; //comlex type
+```
 
 
 
