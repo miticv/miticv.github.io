@@ -124,6 +124,23 @@ It starts with a period:
   .rounded-corners-all;    // use default value
 }
 ```
+variables inside mixins
+```
+#contact-module {
+  @base-size: 24px;
+  .fonts() {
+    font-size: @base-size;
+  }
+}
+
+#contact-form{
+  @base-size: 18px;
+  input{
+   #contact-module > .fonts();   //this will use @base-size of 18px, since it is inside that scope (not 24px)
+  }
+}
+
+```
 use overloads:
 ```
 .color(@color){
@@ -194,20 +211,25 @@ a {
 not emmmited in css but easier to manage
 ```
 #my-forms{
- .set-button {
-  font-size: 14px;
+ .set-button {  
   text-align: center;
+ }
+ .fonts() {
+  font-size: 14px;
+  font-family: "Open Sans", Verdana, Helvetica, sans-serif;
  }
 }
 
 #submit-button {
  #my-forms > .set-button;
+ #my-forms > .fonts();
 }
 ```
 ## Scoping
 
 ```
 @size: 24px;  
+
 #form {
    @size: 18px;
    
@@ -215,7 +237,6 @@ not emmmited in css but easier to manage
      font-size: @size; //18px;
    }
 }
-
 ```
 
 ## String interpolation
@@ -226,7 +247,6 @@ not emmmited in css but easier to manage
 #form {
    background: url("@{root}background.jpg");   //becomes url("/images/background.jpg");
 }
-
 ```
 ## Using JavaScript
 embed JS using backquote: `
@@ -237,6 +257,15 @@ embed JS using backquote: `
 #form {
    background: url("@{app-root}background.jpg");   //becomes url("/IMAGES/background.jpg");
 }
-
-
 ```
+
+Sample:
+```
+input[type=textbox], textarea
+{
+ 
+}
+```
+
+
+
