@@ -75,7 +75,7 @@ width: (100% / 2) + 25%;   //75%
 
 color functions
 ```
-color: lighten(@color, 10%);
+color: lighten(@color, 10%);   //@color need to be # value and not name to work
 color: darken(@color, 10%);
 
 color: saturate(@color, 10%);
@@ -103,3 +103,33 @@ Other:
 ```
 
 ## Mixins
+Feel like functions, overloads
+It starts with a period:
+
+```
+.rounded-corners-all(@size: 5px) {   //5px is default value
+     border-radius: @size;
+    -moz-border-radius: @size;
+    -webkit-border-radius: @size;
+}
+
+#form
+{
+  .rounded-corners-all(5px);
+  .rounded-corners-all;    // use default value
+}
+```
+use overloads:
+```
+.color(@color){
+ color: @color;
+}
+
+.color(@color, @factor) {
+  color: lighten(@color, @factor);
+}
+
+#form {
+  .color(#888, 20%); // uses 2nd overload since we use 2 parameters
+}
+```
