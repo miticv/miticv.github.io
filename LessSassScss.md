@@ -1,8 +1,4 @@
 
-css is valid less (less uses variables, operations, mixins (functions) with guards)
-Sass is 
-
-
 
 # Why CSS is painfull
 
@@ -30,9 +26,6 @@ Example: let font be  + 8px from other font...
 
 ## Problem with imports
 
-
-# Scss
-is same as less and sass. 
 
 # LESS
 *.css is valid *.less file
@@ -259,13 +252,10 @@ embed JS using backquote: `
 }
 ```
 
-Sample:
-```
-input[type=textbox], textarea
-{
- 
-}
-```
+
+# SASS (and SCSS)
+
+
 
 
 
