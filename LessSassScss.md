@@ -273,7 +273,53 @@ $myColor: #ffeedd;  //case sensitive, they are constants!!
 #f: Helvetica, sans serif;  //Lists
 #border: 1px #000 Solid 0 0; //comlex type
 ```
+## Operations
 
+```
+font-size: 4px + 4;
+font-size: @someVar + 4;
+font-size: 20px * .8;   //16px
+color: #FFF / 4;         // #404040;
+width: (100% / 2) + 25%;   //75%
+```
 
+Color:
+```
+color: lighten($color, 10%);   //@color need to be # value and not name to work
+color: darken($color, 10%);
 
+color: saturate($color, 10%);
+color: desaturate($color, 10%);
+
+color: fade_in($color, .1);  //change opacity
+color: fade_out($color, .1);
+
+color: invert($color);
+color: complement($color,);
+```
+More
+```
+$quoted: quote($sometext);
+$unquoted: unquote($sometext);
+
+$value: if(true, $color1, $color2);
+
+@var: round(3.14);
+@var: ceil(3.14);
+@var: floor(3.14);
+@var: percentage(.14);
+```
+String interpolation
+```
+$root: "/images/";
+
+#form{
+  background: url("#{$root}background.jpg");   //becomes url("/images/background.jpg");
+}
+//also:
+$name: "my-class";
+.#{$name} {      //becomes #my-class {
+   color: Blue;
+}
+```
 
