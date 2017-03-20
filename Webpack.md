@@ -26,7 +26,7 @@ plus can combine js and css together also
 (node has to be installed)
 ```
 npm install webpack -g
-npm ./app.js bundle.js   // this creates (outputs) bundle.js
+webpack ./app.js bundle.js   // this creates (outputs) bundle.js
 ```
 now can run index:
 app.js
