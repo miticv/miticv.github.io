@@ -1,4 +1,4 @@
-# Domain Design 
+# Domain Driven Design 
 
 * Premature optimizatin is the root of all evil in software development - Donald Knuth
 * The first concern of the architect is to make sure that the house is usable, it is not thatis made of brick - Uncle Bob
@@ -53,9 +53,31 @@ Abstraction should not depend on detail, rather detail should depend on abstract
 - Independent deployability
 - flexible and maintainable
 - Dashed arrow is for ORM as optional
+Can have contructor containing interfaces injected at the time of creation.
 
 
+## Commands and Queries
+CQRS is domain centric. One read and other write to database.
+More efficient from coding perspective
+Cons:
+inconsistency in read/write, more complex
 
 
+* Single database CQRS
+Queries read using SP, scripts, LINQ, 
+Commands write using EF, or other ORM.
+![SingleCQRS](https://github.com/miticv/miticv.github.io/raw/master/Images/SingleCQRS.png)
 
+* Two database SQRS
+Read and write DBses
+Write to NoSql, read from first normal form dbs. (read optimized) it is fast reading
+![TwoDbCQRS](https://github.com/miticv/miticv.github.io/raw/master/Images/TwoDbCQRS.png)
+
+* Event Sourcing CQRS
+Store events
+Replay events
+Modify entity
+Store new event
+Update read database
+![EvenSourcingCQRS](https://github.com/miticv/miticv.github.io/raw/master/Images/EvenSourcingCQRS.png)
 
