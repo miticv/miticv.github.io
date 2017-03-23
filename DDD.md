@@ -134,3 +134,6 @@ HOW -- Automated, Semi-automated, Manual
 -- Manual (min)    
     
 ![AcceptanceTests](https://github.com/miticv/miticv.github.io/raw/master/Images/AcceptanceTests.png)
+
+
+
