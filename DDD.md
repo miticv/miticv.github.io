@@ -18,7 +18,7 @@ Higher initial cost
 
 
 ### Hexagonal Architecture
-![alt tag](https://raw.githubusercontent.com/miticv/miticv.github.io/master/images/Hexagonal.png)
+![alt tag](https://github.com/miticv/miticv.github.io/raw/master/Images/Hexagonal.png)
 ### Onion Architecture
 
 ### The Clean Architecture
