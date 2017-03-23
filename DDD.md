@@ -81,3 +81,56 @@ inconsistency in read/write, more complex
 - Update read database
 ![EvenSourcingCQRS](https://github.com/miticv/miticv.github.io/raw/master/Images/EvenSourcingCQRS.png)
 
+## Functional Organization -  Screaming Archtecture
+
+- The architecture shold scream the intent of the system - Uncle Bob
+
+MVC (Models-Views-Controllers) vs CPV (Customers-Products-Vendors)
+CPV is more DDD than MVC
+- User Spartial locality
+- Easier to Navigate
+- Avoid vendor (framework) lock-in (such as mvc)
+
+* Presentation
+-- Aggregate root for each screen or page
+
+* Application
+-- Aggregate root entity folders (size of folder represents size of code it represents)(use case)
++- Classes and interfaces
+==> Items used together live together by functional cohesion. (spartial locality)
+* Domain
+-- by domain entity
+* Infrastructure
+-- by component or 3rd party dependancies
+* Peristance
+-- by each DB table
+* Cross-cutting concern
+-- by specific aspect (logging, security, configuration etc)
+
+## Microservices
+Divide complex system into smaller systems.
+Each is decouple with other with interface with other microservices.
+Microservice is like ravioli
+-- higher up front cost, but flatter cost curve
+-- Conway's Law (waterfall not good for microservice)
+-- Independence - but
+===>  start with one but break into micro service once it grows.
+
+
+## Testable TDD
+
+1-- create failing test (red)
+2-- write code to pass (green)
+3-- refactor to improve the code (blue)
+
+WHAT -- Unit, Integration, Component, Service, UI
+WHY -- Functional, Acceptance, Smoke, Exploratory
+HOW -- Automated, Semi-automated, Manual
+
+4 types: (more costly as going down pyramid:)
+-- Unit (most)
+-- Sevice (some)  => Acceptance test (automated)
+-- Coded UI (few)
+-- Manual (min)
+
+![AcceptanceTests](https://github.com/miticv/miticv.github.io/raw/master/Images/AcceptanceTests.png)
