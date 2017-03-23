@@ -63,17 +63,17 @@ Cons:
 inconsistency in read/write, more complex
 
 
-* Single database CQRS
+### Single database CQRS
 - Queries read using SP, scripts, LINQ, 
 - Commands write using EF, or other ORM.
 ![SingleCQRS](https://github.com/miticv/miticv.github.io/raw/master/Images/SingleCQRS.png)
 
-* Two database SQRS
+### Two database SQRS
 - Read and write DBses
 - Write to NoSql, read from first normal form dbs. (read optimized) it is fast reading
 ![TwoDbCQRS](https://github.com/miticv/miticv.github.io/raw/master/Images/TwoDbCQRS.png)
 
-* Event Sourcing CQRS
+### Event Sourcing CQRS
 - Store events
 - Replay events
 - Modify entity
