@@ -42,3 +42,20 @@ that pertain to the implementation details of the application. (like persistance
 
 ## Application Layer
 ![FourLayer](https://github.com/miticv/miticv.github.io/raw/master/Images/FourLayer.png)
+* Implements use cases
+* High level application logic
+* Knows abot domain
+* DOES'T know about infrastructure, persistance and presentation
+* Contain interfaces
+* Uses IoC (orange dependencies)
+- Inverted Dependency (persistance and infrastructure depends on application)
+Abstraction should not depend on detail, rather detail should depend on abstraction
+- Independent deployability
+- flexible and maintainable
+- Dashed arrow is for ORM as optional
+
+
+
+
+
+
