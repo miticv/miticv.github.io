@@ -64,20 +64,20 @@ inconsistency in read/write, more complex
 
 
 * Single database CQRS
-Queries read using SP, scripts, LINQ, 
-Commands write using EF, or other ORM.
+- Queries read using SP, scripts, LINQ, 
+- Commands write using EF, or other ORM.
 ![SingleCQRS](https://github.com/miticv/miticv.github.io/raw/master/Images/SingleCQRS.png)
 
 * Two database SQRS
-Read and write DBses
-Write to NoSql, read from first normal form dbs. (read optimized) it is fast reading
+- Read and write DBses
+- Write to NoSql, read from first normal form dbs. (read optimized) it is fast reading
 ![TwoDbCQRS](https://github.com/miticv/miticv.github.io/raw/master/Images/TwoDbCQRS.png)
 
 * Event Sourcing CQRS
-Store events
-Replay events
-Modify entity
-Store new event
-Update read database
+- Store events
+- Replay events
+- Modify entity
+- Store new event
+- Update read database
 ![EvenSourcingCQRS](https://github.com/miticv/miticv.github.io/raw/master/Images/EvenSourcingCQRS.png)
 
