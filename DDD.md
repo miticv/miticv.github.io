@@ -119,18 +119,18 @@ Microservice is like ravioli
 
 ## Testable TDD
 
-1-- create failing test (red)
-2-- write code to pass (green)
-3-- refactor to improve the code (blue)
+1-- create failing test (red)   
+2-- write code to pass (green)   
+3-- refactor to improve the code (blue)   
 
-WHAT -- Unit, Integration, Component, Service, UI
-WHY -- Functional, Acceptance, Smoke, Exploratory
-HOW -- Automated, Semi-automated, Manual
+WHAT -- Unit, Integration, Component, Service, UI      
+WHY -- Functional, Acceptance, Smoke, Exploratory    
+HOW -- Automated, Semi-automated, Manual    
 
-4 types: (more costly as going down pyramid:)
--- Unit (most)
--- Sevice (some)  => Acceptance test (automated)
--- Coded UI (few)
--- Manual (min)
-
+4 types: (more costly as going down pyramid:)    
+-- Unit (most)    
+-- Sevice (some)  => Acceptance test (automated)    
+-- Coded UI (few)    
+-- Manual (min)    
+    
 ![AcceptanceTests](https://github.com/miticv/miticv.github.io/raw/master/Images/AcceptanceTests.png)
