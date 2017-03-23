@@ -5,4 +5,4 @@
 
 -- Not allways make sense to DDD (tick tac toe game example)
 
-
+![NavigationMap](https://github.com/miticv/miticv.github.io/raw/master/Images/NavigationMap.png)
