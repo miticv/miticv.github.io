@@ -1,4 +1,6 @@
 
+# DDD Fudamentals
+
 1 -- Interaction of Domain Experts (Spend time talking to domain experts)      
 2 -- Model a single sub-domain at the time   
 3 -- Implementation of Sub-Domain    
@@ -34,7 +36,9 @@ Object, connected with rich relationships. But there are no behaviours just bags
 They come with rules NOT to put any domain logic in the domain objects. Instead - services using the object capture the domain logic.
 
 -- Rich - focus on BEHAVIOUR of the Domain Models 
-## Entities 
+
+## Entitiy Objects
+
 DDD is driven by behaviour, but we still need objects:   
 Many objects are not fudamentally defined by their attribures - but by a thread of continuity and identity.   
 There are 2 types of objects - defined by Identity and defined by Value   
@@ -63,6 +67,9 @@ b) duplicate customers inputed in system twice?
 
 *Consider not using bi-derictonal *
 use One Way relationshiop instead.
+
+
+## Value Objects
 
 
 ![NavigationMapEntities](https://github.com/miticv/miticv.github.io/raw/master/Images/DDDFudamentals/NavigationMapEntities.png)
