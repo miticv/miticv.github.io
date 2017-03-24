@@ -45,6 +45,22 @@ Entity is easier to use GUID instead of ID (but not required!) (IEntity as strin
 ![GUIDandINT](https://github.com/miticv/miticv.github.io/raw/master/Images/DDDFudamentals/GUIDandINT.png)
 -- this is interesting. If GUID it will be easier to "copy" data from PROD to lower environments also as opposed to hard binded-int tied to DB.
 
+*Single Responsibility Principle of Entities*    
+Entity doesn't have to have lots of busines logic in it.
+If it does it is wrong, responsibility is keep very closed related responsibilities together.    
+Design shouold focus on 2: ID and LIFE CYCLE     
+Identity is ot just ID always - as when people are involved, proving who they are with SIN and Phone#. 
+If too much then delegate verify identity to some other object to be responsible for that.       
+Lifecycle of ups is rec, shipped, in transit, loc A, loc B, delivered. But if there is much more logic than hat then
+use services that answer what is to be done with the package, or to value object with status logic.
+
+*Also Entities should NOT have equality methods!!*     
+(if you do ask yourself WHY are you asking that question?   
+a) distributed DB with 2 same IDs
+b) duplicate customers inputed in system twice?
+c) 
+
+--- Value entities should have equality methods.
 
 
 ![NavigationMapEntities](https://github.com/miticv/miticv.github.io/raw/master/Images/DDDFudamentals/NavigationMapEntities.png)
