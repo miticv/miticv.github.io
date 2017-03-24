@@ -43,6 +43,8 @@ The ones by Identity are called ENTITIES
 Entity has Key to identify it (has interface *IEntity* with id property: *int id;* IEntity<int>)      
 Entity is easier to use GUID instead of ID (but not required!) (IEntity as string GUID; : IEntity<GUID>)          
 ![GUIDandINT](https://github.com/miticv/miticv.github.io/raw/master/Images/DDDFudamentals/GUIDandINT.png)
+-- this is interesting. If GUID it will be easier to "copy" data from PROD to lower environments also as opposed to hard binded-int tied to DB.
+
 
 
 ![NavigationMapEntities](https://github.com/miticv/miticv.github.io/raw/master/Images/DDDFudamentals/NavigationMapEntities.png)
