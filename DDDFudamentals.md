@@ -40,10 +40,9 @@ Many objects are not fudamentally defined by their attribures - but by a thread 
 There are 2 types of objects - defined by Identity and defined by Value   
 The ones by Identity are called ENTITIES   
 
-Entity has Key to identify it (has interface *IEntity* with id property: *int id;* IEntity<int>)
-Entity is easier to use GUID instead of ID (but not required!) (IEntity as string GUID; : IEntity<GUID> )
+Entity has Key to identify it (has interface *IEntity* with id property: *int id;* IEntity<int>)      
+Entity is easier to use GUID instead of ID (but not required!) (IEntity as string GUID; : IEntity<GUID>)          
 ![GUIDandINT](https://github.com/miticv/miticv.github.io/raw/master/Images/DDDFudamentals/GUIDandINT.png)
-
 
 
 ![NavigationMapEntities](https://github.com/miticv/miticv.github.io/raw/master/Images/DDDFudamentals/NavigationMapEntities.png)
