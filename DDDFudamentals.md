@@ -56,11 +56,13 @@ use services that answer what is to be done with the package, or to value object
 
 *Also Entities should NOT have equality methods!!*     
 (if you do ask yourself WHY are you asking that question?   
-a) distributed DB with 2 same IDs
-b) duplicate customers inputed in system twice?
-c) 
+a) distributed DB with 2 same IDs      
+b) duplicate customers inputed in system twice?    
 
---- Value entities should have equality methods.
+--- Value entities *should* have equality methods.
+
+*Consider not using bi-derictonal *
+use One Way relationshiop instead.
 
 
 ![NavigationMapEntities](https://github.com/miticv/miticv.github.io/raw/master/Images/DDDFudamentals/NavigationMapEntities.png)
