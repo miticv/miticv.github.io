@@ -103,11 +103,53 @@ Service examples:
 ![Glosary3](https://github.com/miticv/miticv.github.io/raw/master/Images/DDDFudamentals/Glosary3.png)
 ![Glosary4](https://github.com/miticv/miticv.github.io/raw/master/Images/DDDFudamentals/Glosary4.png)
 
+## Data Complexity
+
+### Aggregates & Aggregate Roots
+
+Relation One to Many (Root and Root's Invariant)   
+ACID: Atomic, Consistent, Isolated, Durable   
+Aggregate Root must maintain its invariants (Number and type of components in the example)   
+When Deleating is cstading, then object in question is Aggregate Root.
+
+Aggregate is a cluster of assiciated objects that we treat as a unit for the purpose of data changes.   
+  
+![AggregateRelationships](https://github.com/miticv/miticv.github.io/raw/master/Images/DDDFudamentals/AggregateRelationships.png)
+![Glosary5](https://github.com/miticv/miticv.github.io/raw/master/Images/DDDFudamentals/Glosary5.png)
+
+
+### Repositories
+
+Think of it as in-mommory collection (doesnt care how it does it)   
+Repositories for aggregate roots   
+Client focus on model, repo focus on persistence    
+
+Common issues:
+1 - N+1 Query Errors: Fetch list and then fetch each item individually    
+2 - Innapropriate use of eager or lazy loading   
+3 - Fetching more data than required   
+
+
+### Factories
+
+Factories create new objects  (persistance NO NO NO)   
+Repositores find and update existing objects (persistance YES YES YES)  
+- repository can use Factory to create its objects.   
+
+Implement IRepository<T>  (with List(), GetByd(), Insert(), Update(), Delete() )
+if it is CRUD it makes sense (It is DDD recommendation for Aggregate Root), so you dont have to create separate one for each Entity.    
+Catch is not to allow them to use this generic interface to access non-aggregate roots by adding IAggregateRoot
+If it is not CRUD  - maybe might not make sense to implement all of it!!
+
+![Generic](https://github.com/miticv/miticv.github.io/raw/master/Images/DDDFudamentals/GenericOnlyForAggregateRoots.png)
+![Glosary6](https://github.com/miticv/miticv.github.io/raw/master/Images/DDDFudamentals/Glosary6.png)
+
+### Domain Events
 
 
 
 
-
+### Anti-Corryption Layers
 
 
 
