@@ -68,13 +68,26 @@ b) duplicate customers inputed in system twice?
 *Consider not using bi-derictonal *
 use One Way relationshiop instead.
 
-
-## Value Objects
-
-
 ![NavigationMapEntities](https://github.com/miticv/miticv.github.io/raw/master/Images/DDDFudamentals/NavigationMapEntities.png)
 
 
+## Value Objects
+
+-- Measures, quantifies, or describes A THING in the domain    
+-- Idenity is based on composition of the values of all properties   
+-- Immutable (once created cannot change, you can create new one)    
+-- Compared using all values   
+-- No side effects (Any Methods or Behaviours only compute things, and does not change state of the object or the system)    
+   (if new value is needed new value object is returned)   
+   
+   
+Example **string** is value object. It    
+Money is great Value Object: Point in time, Currency (US$) and Value (50k).      
+DateRange is also Value Object: start, end.    
+
+Use Value object instead of Entities whenever possible.    
+### Start thinking as a Value Object, and if start having states - make it a Value Object
+Value Object are great place to put method and logic - better than Entities.
 
 
 
