@@ -100,7 +100,8 @@ Service examples:
 -- Domain - Transfer between balnces, Process Order, ....
 -- Infrastructure - Send Email, Log to a File
 
-
+![Glosary3](https://github.com/miticv/miticv.github.io/raw/master/Images/DDDFudamentals/Glosary3.png)
+![Glosary4](https://github.com/miticv/miticv.github.io/raw/master/Images/DDDFudamentals/Glosary4.png)
 
 
 
