@@ -146,10 +146,26 @@ If it is not CRUD  - maybe might not make sense to implement all of it!!
 
 ### Domain Events
 
+-- WHEN this happens, THEN something else should happen   
+  also listen for
+-- They represent the PAST   
+-- They are typically IMMUTABLE (can't alter history)    
 
-
+Examples:   
+User authenticated, Appointment confirmed, Payment received
+ 
+Each even should have its own class    
+IDomainEvent  
+ 
+SignalR - for capturing Domain Events!    
+Domain event (minimum informaiton) vs Cross System events      
 
 ### Anti-Corryption Layers
 
+Do not bleed bounded context between systems.   
+Translate between foreign system and tiyrs
+Facade or Adapter
 
+![AntiCorruptionLayer](https://github.com/miticv/miticv.github.io/raw/master/Images/DDDFudamentals/AntiCorruptionLayer.png)
+![Glosary7](https://github.com/miticv/miticv.github.io/raw/master/Images/DDDFudamentals/Glosary7.png)
 
