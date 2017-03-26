@@ -73,6 +73,9 @@ use One Way relationshiop instead.
 
 ## Value Objects
 
+(struct in c# core ?)
+-- Value objects do not have DB tables!
+
 -- Measures, quantifies, or describes A THING in the domain    
 -- Idenity is based on composition of the values of all properties   
 -- Immutable (once created cannot change, you can create new one, dont set public setters.)    
