@@ -169,3 +169,31 @@ Facade or Adapter
 ![AntiCorruptionLayer](https://github.com/miticv/miticv.github.io/raw/master/Images/DDDFudamentals/AntiCorruptionLayer.png)
 ![Glosary7](https://github.com/miticv/miticv.github.io/raw/master/Images/DDDFudamentals/Glosary7.png)
 
+### Messaging Queueues
+
+* SQL Server Service Broker Queue   
+* RabbitMQ
+* MSMQ
+* Azure Queues
+* AWS Queues
+
+Service Bus - sits on top of queues and makes sure messages go to right applications. Decoupling routing of the message    
+* NServiceBus
+* Azure Service Bus
+* MassTransit (open Source)
+* Neuron EB (open Source)
+* Mule
+
+** smtp4dev :)  great tool for testing 
+
+
+
+
+
+
+
+
+
+
+
+
