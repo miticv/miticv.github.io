@@ -175,7 +175,7 @@ Facade or Adapter
 ### Messaging Queueues
 
 * SQL Server Service Broker Queue   
-* RabbitMQ
+* RabbitMQ (install Erlang then RabbitMQ)
 * MSMQ
 * Azure Queues
 * AWS Queues
