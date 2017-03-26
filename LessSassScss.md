@@ -267,11 +267,11 @@ Supported on server side (not client side) (node, .net etc)
 ```
 $myColor: #ffeedd;  //case sensitive, they are constants!!
 
-#a: Black;  //Color
-#b: 4px;    //Units
-#c: 1.0em;  //Units
-#f: Helvetica, sans serif;  //Lists
-#border: 1px #000 Solid 0 0; //comlex type
+$a: Black;  //Color
+$b: 4px;    //Units
+$c: 1.0em;  //Units
+$f: Helvetica, sans serif;  //Lists
+$border: 1px #000 Solid 0 0; //comlex type
 ```
 ## Operations
 
