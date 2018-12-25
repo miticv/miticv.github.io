@@ -52,6 +52,21 @@ Example Topic-A with 2 partitions and replication factor of 2
 
 # Producers
 
-Producers write data to topics
+Producers write data to topics (made out of partitions) and automatically know to which broker and partition to write to. In case of broker failures, producers will automatically recover
+
+**Producers can choose to receive acknowledgment of data writes:**    
+* acks=0 : Producer does not wait for acknowledgment (possible data loss)   
+* acks=1: Producer will wait for leader acknowledgement (limited data loss)   
+* acks=all: Leader + prelicas acknowledgement (no data loss)   
+
+**Producer can choose to send a key with the message (string, number, etc)**   
+* key = null: data is sent round robin
+* key != null: all messages for that key will always go to the same partition (usefull when you need message ordering)
+(We get this guarantee thanks to hashing, and it **depends on number of partitions**)
+
+
+
+
+
 
 
