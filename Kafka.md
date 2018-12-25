@@ -90,6 +90,38 @@ Consumers read data from a topic (indentified by name). Consumers know which bro
 
 ![ConsumerOffset](https://github.com/miticv/miticv.github.io/blob/master/Images/ConsumerOffset.png)
 
+## Delivery semantics
+
+Consumer choose when to do commit offsets. There are 3 semantics:
+* At most once   
+Offsets are commited as soon as the message is received   
+If te processing goes wrong, the message will be lost (it would not read it again)   
+* At least once (usually preferred)   
+Offsets are commited after the message is processed   
+If processing goes wrong, the message will be read again   
+This can result in duplicate processing of messages. Make sure your processing is **idempotent**   
+(processing again the messages won't impact the system)
+* Exactly once   
+This can be achieven for Kafka-Kafka workflows using Kaflka Streams API
+(for Kafka-External  System workflows, use an idempotent consumer)
+
+
+# Zookeeper
+
+* Kafka cannot work without zookeeper
+* Manages brokers (keeps a list of them)
+* Helps in performing Leder ellection for partitions
+* Sends notifications to Kafka in case of changes
+* Zookeeper has a leader (handle writes) and rest are followers (handle reads)
+
+
+# Summary
+
+![Kafka](https://github.com/miticv/miticv.github.io/blob/master/Images/Kafka.png)
+
+
+
+
 
 
 
