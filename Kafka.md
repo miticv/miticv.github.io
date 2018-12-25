@@ -17,3 +17,11 @@ Topis are split in partitions
 ![Topics](https://github.com/miticv/miticv.github.io/blob/master/Images/Topics.png)
 
 # Broker
+
+* A kafka clusted is composed of multiple brokers (servers)
+* Each broker is identified by its ID (integer)
+* Each broker contains certain topic partitions
+* After connecting to any broker, you will be connected to whole cluster   
+(it is called bootstrap broker, and it can be any)
+* Good number to start is 3 brookers (can grow to 100s)
+* 
