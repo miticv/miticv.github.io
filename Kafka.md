@@ -1,10 +1,8 @@
 
-# Topic
-Is a particular steram of data.
-You can have as many topics as you want
-Topic is indentified by its name
+# Topics, partitions and offsets
+Is a particular steram of data. You can have as many topics as you want. Topic is indentified by its name
 
-Topis are split in partitions
+* Topis are split in partitions
 * Each partition is ordered
 * Each message within a partition gets an incremental id called offest
 * Offset only have a meaning for a specific partition   
@@ -16,6 +14,9 @@ Topis are split in partitions
 
 ![Topics](https://github.com/miticv/miticv.github.io/blob/master/Images/Topics.png)
 
+
+
+
 # Broker
 
 * A kafka clusted is composed of multiple brokers (servers)
@@ -24,12 +25,29 @@ Topis are split in partitions
 * After connecting to any broker, you will be connected to whole cluster   
 (it is called bootstrap broker, and it can be any)
 * Good number to start is 3 brookers (can grow to 100s)
+
+## Brokers and Topics
+
+Example Topic-A with 3 partitions
+Example Topic-B with 3 2artitions
+
+![BrokersAndTopics](https://github.com/miticv/miticv.github.io/blob/master/Images/BrokersAndTopics.png)
+
+![Brokers](https://github.com/miticv/miticv.github.io/blob/master/Images/Brokers.png)
+
 * At any time ONE broker can be a LEADER  for a given PARTITION   
 (Marked as star in the image)
 * Only leader can receive data and serve data for a partition!
 * Other brokers will synchronize the data
 * Each partition has 1 leader and multiple ISR (in-sync replicas)
+* Topics should have replication factor >1 (usualy 3). This way if a broker is down, another broker can serve the data
+
+
 
 Example Topic-A with 2 partitions and replication factor of 2
 
 ![Brokers](https://github.com/miticv/miticv.github.io/blob/master/Images/Brokers.png)
+
+# Producers
+
+Producers write data to topics
