@@ -15,8 +15,6 @@ Is a particular steram of data. You can have as many topics as you want. Topic i
 ![Topics](https://github.com/miticv/miticv.github.io/blob/master/Images/Topics.png)
 
 
-
-
 # Broker
 
 * A kafka clusted is composed of multiple brokers (servers)
@@ -26,14 +24,14 @@ Is a particular steram of data. You can have as many topics as you want. Topic i
 (it is called bootstrap broker, and it can be any)
 * Good number to start is 3 brookers (can grow to 100s)
 
+![Brokers](https://github.com/miticv/miticv.github.io/blob/master/Images/Brokers.png)
+
 ## Brokers and Topics
 
-Example Topic-A with 3 partitions
-Example Topic-B with 3 2artitions
+Example Topic-A with 3 partitions   
+Example Topic-B with 3 2artitions   
 
 ![BrokersAndTopics](https://github.com/miticv/miticv.github.io/blob/master/Images/BrokersAndTopics.png)
-
-![Brokers](https://github.com/miticv/miticv.github.io/blob/master/Images/Brokers.png)
 
 * At any time ONE broker can be a LEADER  for a given PARTITION   
 (Marked as star in the image)
@@ -46,7 +44,7 @@ Example Topic-B with 3 2artitions
 
 Example Topic-A with 2 partitions and replication factor of 2
 
-![Brokers](https://github.com/miticv/miticv.github.io/blob/master/Images/Brokers.png)
+![BrokersReplications](https://github.com/miticv/miticv.github.io/blob/master/Images/BrokersReplications.png)
 
 # Producers
 
