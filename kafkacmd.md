@@ -1,7 +1,7 @@
 
 
 
-`docker pull confluentinc/cp-zookeeper`
+`docker pull confluentinc/cp-zookeeper`   
 `docker pull confluentinc/cp-kafka`
 
 `docker image inspect confluentinc/cp-zookeeper`
