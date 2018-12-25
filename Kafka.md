@@ -83,6 +83,12 @@ Consumers read data from a topic (indentified by name). Consumers know which bro
 
 ## Consumer Offsets
 
+* Kafka stores the offset for each consumer group
+* The offsets are commited live in a kafka topic named __consumer_offsets
+* When a consumer in a group has processed data received from Kafka, it should be commiting the offsets
+* If a consumer dies, it will be able to read back from where it left off (thanks to the committed consumer offsets)
+
+![ConsumerOffset](https://github.com/miticv/miticv.github.io/blob/master/Images/ConsumerOffset.png)
 
 
 
