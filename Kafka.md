@@ -64,17 +64,24 @@ Producers write data to topics (made out of partitions) and automatically know t
 * key != null: all messages for that key will always go to the same partition (usefull when you need message ordering)
 (We get this guarantee thanks to hashing, and it **depends on number of partitions**)
 
-
+![Producer](https://github.com/miticv/miticv.github.io/blob/master/Images/Producer.png)
 
 # Consumers
 
 Consumers read data from a topic (indentified by name). Consumers know which broker to read from. In case of broker failures, consumers know how to recover. Data is red in order within each partition.
 
+![Consumer](https://github.com/miticv/miticv.github.io/blob/master/Images/Consumer.png)
 
 ## Consumer Groups
 
+* Consumer read data in consumer groups.
+* Each consumer within a group reads from exclusive partitions
+* If you have more consumers than partitions, some consumers will be inactive.
+* Consumers will automatically ise a GroupCoordinator and a ConsumerCoordinator to assign consumers to a partition
 
+![ConsumerGroup](https://github.com/miticv/miticv.github.io/blob/master/Images/ConsumerGroup.png)
 
+## Consumer Offsets
 
 
 
