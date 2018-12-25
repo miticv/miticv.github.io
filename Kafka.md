@@ -66,6 +66,18 @@ Producers write data to topics (made out of partitions) and automatically know t
 
 
 
+# Consumers
+
+Consumers read data from a topic (indentified by name). Consumers know which broker to read from. In case of broker failures, consumers know how to recover. Data is red in order within each partition.
+
+
+## Consumer Groups
+
+
+
+
+
+
 
 
 
