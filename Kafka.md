@@ -24,4 +24,12 @@ Topis are split in partitions
 * After connecting to any broker, you will be connected to whole cluster   
 (it is called bootstrap broker, and it can be any)
 * Good number to start is 3 brookers (can grow to 100s)
-* 
+* At any time ONE broker can be a LEADER  for a given PARTITION   
+(Marked as star in the image)
+* Only leader can receive data and serve data for a partition!
+* Other brokers will synchronize the data
+* Each partition has 1 leader and multiple ISR (in-sync replicas)
+
+Example Topic-A with 2 partitions and replication factor of 2
+
+![Brokers](https://github.com/miticv/miticv.github.io/blob/master/Images/Brokers.png)
