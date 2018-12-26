@@ -66,9 +66,14 @@ Producers write data to topics (made out of partitions) and automatically know t
 
 ![Producer](https://github.com/miticv/miticv.github.io/blob/master/Images/Producer.png)
 
+- Producer will create new topic if does not exist (with partition and replicaation of 1 **num_partitions** kafka property )
+So recoomendation is to create topic before produce on it.
+
 # Consumers
 
 Consumers read data from a topic (indentified by name). Consumers know which broker to read from. In case of broker failures, consumers know how to recover. Data is red in order within each partition.
+
+By defalt consumer read only new messages since consumer is started. You can specify option to start from the begining if needed.
 
 ![Consumer](https://github.com/miticv/miticv.github.io/blob/master/Images/Consumer.png)
 
