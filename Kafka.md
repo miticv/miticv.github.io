@@ -79,12 +79,15 @@ By defalt consumer read only new messages since consumer is started. You can spe
 
 ## Consumer Groups
 
-* Consumer read data in consumer groups.
+* Consumer read data in consumer groups (usually name of the application)
 * Each consumer within a group reads from exclusive partitions
 * If you have more consumers than partitions, some consumers will be inactive.
 * Consumers will automatically ise a GroupCoordinator and a ConsumerCoordinator to assign consumers to a partition
 
 ![ConsumerGroup](https://github.com/miticv/miticv.github.io/blob/master/Images/ConsumerGroup.png)
+
+Consumers from the same group would only send not processed messages (even if asked to get from the begining)
+We can create consumer groups, modify offset, see lag (how many messaages is behind)
 
 ## Consumer Offsets
 
