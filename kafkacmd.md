@@ -17,7 +17,6 @@ docker run -it confluentinc/cp-zookeeper bash
 `docker image inspect confluentinc/cp-kafka` (check version)
 ```powershell
 docker run -it confluentinc/cp-kafka bash
-# cd /usr/bin
 # kafka-server-start
 ```
 
