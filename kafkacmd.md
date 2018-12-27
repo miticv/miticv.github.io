@@ -226,10 +226,10 @@ kafka-console-consumer --bootstrap-server FXWVRN2:4601 --topic myTopic --from-be
 will keep track of the offsets, and balance between partitions
 
 ```
-kafka-console-consumer --bootstrap-server FXWVRN2:4601 --topic myTopic --group my-test-app --group=my-test-app 
+kafka-console-consumer --bootstrap-server FXWVRN2:4601 --topic myTopic --group my-test-app
 
 # It will not take into account anymore --from-beginning flag
-kafka-console-consumer --bootstrap-server FXWVRN2:4601 --topic myTopic --group my-test-app --group=my-test-app --from-beginning 
+kafka-console-consumer --bootstrap-server FXWVRN2:4601 --topic myTopic --group my-test-app --from-beginning 
 ```
 
 # Consumer Group
