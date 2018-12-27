@@ -90,6 +90,26 @@ kafka-console-consumer --bootstrap-server FXWVRN2:4201 --topic myTopic --group m
 # Consumer Group
 
 ```
-#list consumers
+#list consumer groups
 kafka-consumer-groups --bootstrap-server FXWVRN2:4201 --list
+
+#show group lag, offsets etc.
+kafka-consumer-groups --bootstrap-server FXWVRN2:4201 --describe --group my-test-app 
+```
+
+# Manage Offsets
+ will only work if the group is inactive (meanning no active listeners)
+ 
+```
+
+kafka-consumer-groups --bootstrap-server FXWVRN2:4201 --group my-test-app --topic myTopic --reset-offsets --to-earliest --execute 
+
+# move marker 2 messages for EACH PARTITION!
+kafka-consumer-groups --bootstrap-server FXWVRN2:4201 --group my-test-app --topic myTopic --reset-offsets --shift-by -2 --execute  
+
+# move marker 2 messages for partition 0
+kafka-consumer-groups --bootstrap-server FXWVRN2:4201 --group my-test-app --topic myTopic:0 --reset-offsets --shift-by -2 --execute 
+
+# move marker to date-time
+kafka-consumer-groups --bootstrap-server FXWVRN2:4201 --group my-test-app --topic myTopic --reset-offsets --to-datetime 2018-05-28T23:30:15.000 --execute
 ```
