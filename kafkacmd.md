@@ -159,6 +159,66 @@ services:
     networks:
       - kafka_network
 
+  schema-1:
+    image: confluentinc/cp-schema-registry:5.1.0
+    container_name: schema-1
+    depends_on:
+      - zookeeper-1
+      - zookeeper-2
+      - zookeeper-3
+      - kafka-1
+      - kafka-2
+      - kafka-3
+    restart: always
+    ports:
+      - "5601:5601"
+    environment:
+      SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: zookeeper-1:22181,zookeeper-2:22181,zookeeper-3:22181
+      SCHEMA_REGISTRY_HOST_NAME: schema-1
+      SCHEMA_REGISTRY_LISTENERS: 'http://schema-1:5601'
+    networks:
+      - kafka_network
+      
+  schema-2:
+    image: confluentinc/cp-schema-registry:5.1.0
+    container_name: schema-2
+    depends_on:
+      - zookeeper-1
+      - zookeeper-2
+      - zookeeper-3
+      - kafka-1
+      - kafka-2
+      - kafka-3
+    restart: always
+    ports:
+      - "5602:5602"
+    environment:
+      SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: zookeeper-1:22181,zookeeper-2:22181,zookeeper-3:22181
+      SCHEMA_REGISTRY_HOST_NAME: schema-2
+      SCHEMA_REGISTRY_LISTENERS: 'http://schema-1:5602'
+    networks:
+      - kafka_network
+
+  schema-3:
+    image: confluentinc/cp-schema-registry:5.1.0
+    container_name: schema-3
+    depends_on:
+      - zookeeper-1
+      - zookeeper-2
+      - zookeeper-3
+      - kafka-1
+      - kafka-2
+      - kafka-3
+    restart: always
+    ports:
+      - "5603:5603"
+    environment:
+      SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: zookeeper-1:22181,zookeeper-2:22181,zookeeper-3:22181
+      SCHEMA_REGISTRY_HOST_NAME: schema-3
+      SCHEMA_REGISTRY_LISTENERS: 'http://schema-1:5603'
+    networks:
+      - kafka_network
+
 networks:
   kafka_network:
 
@@ -257,4 +317,19 @@ kafka-consumer-groups --bootstrap-server FXWVRN2:4601 --group my-test-app --topi
 
 # move marker to date-time
 kafka-consumer-groups --bootstrap-server FXWVRN2:4601 --group my-test-app --topic myTopic --reset-offsets --to-datetime 2018-05-28T23:30:15.000 --execute
+```
+
+
+# Add schema to registry
+
+Run cp-schema-registry container:
+```
+docker run -it --net=confluent --rm confluentinc/cp-schema-registry:5.1.0 bash
+```
+Add schema:
+```
+# /usr/bin/kafka-avro-console-producer \
+  --broker-list FXWVRN2:4601 --topic myTopic \
+  --property schema.registry.url=http://FXWVRN2:5601 \
+  --property value.schema='{"type":"record","name":"myrecord","fields":[{"name":"f1","type":"string"}]}'
 ```
