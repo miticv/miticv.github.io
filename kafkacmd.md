@@ -25,7 +25,7 @@ docker run -it confluentinc/cp-kafka bash
 
 after run docker-compose you can run `docker run -it confluentinc/cp-kafka bash` and then execute kafka producer, consumer commands...
 
-
+[kafka-local.yml](https://github.com/miticv/miticv.github.io/blob/master/kafka-local.yml)
 
 # Topics
 
