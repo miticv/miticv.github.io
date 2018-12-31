@@ -26,9 +26,10 @@ docker run -it confluentinc/cp-kafka bash
 after run docker-compose you can run `docker run -it confluentinc/cp-kafka bash` and then execute kafka producer, consumer commands...
 
 ```
+# reference: https://docs.confluent.io/current/installation/docker/docs/config-reference.html
 #
 # docker-compose -f .\kafka-local.yml up
-#
+# 
 
 version: '3'
 services:
@@ -107,13 +108,14 @@ services:
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://FXWVRN2:4601
       KAFKA_LOG_DIR: /var/lib/kafka/data
       KAFKA_UNCLEAN_LEADER_ELECTION_ENABLE: "false"
-#      KAFKA_ZOOKEEPER_SESSION_TIMEOUT_MS: 30000
-#      KAFKA_MIN_INSYNC_REPLICAS: 2
-#      KAFKA_DEFAULT_REPLICATION_FACTOR: 3
-#      KAFKA_LOG_RETENTION_HOURS: 48
-#      KAFKA_OFFSETS_RETENTION_MINUTES: 14400
-#      KAFKA_MESSAGE_MAX_BYTES: 25000000
-#      KAFKA_REPLICA_FETCH_MAX_BYTES: 25485760
+      KAFKA_ZOOKEEPER_SESSION_TIMEOUT_MS: 30000
+      KAFKA_MIN_INSYNC_REPLICAS: 2
+      KAFKA_DEFAULT_REPLICATION_FACTOR: 3
+      KAFKA_LOG_RETENTION_HOURS: 48
+      KAFKA_OFFSETS_RETENTION_MINUTES: 14400
+      KAFKA_MESSAGE_MAX_BYTES: 25000000
+      KAFKA_REPLICA_FETCH_MAX_BYTES: 25485760
+#      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false"
     networks:
       - kafka_network
 
@@ -135,6 +137,14 @@ services:
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://FXWVRN2:4602
       KAFKA_LOG_DIR: /var/lib/kafka/data
       KAFKA_UNCLEAN_LEADER_ELECTION_ENABLE: "false"
+      KAFKA_ZOOKEEPER_SESSION_TIMEOUT_MS: 30000
+      KAFKA_MIN_INSYNC_REPLICAS: 2
+      KAFKA_DEFAULT_REPLICATION_FACTOR: 3
+      KAFKA_LOG_RETENTION_HOURS: 48
+      KAFKA_OFFSETS_RETENTION_MINUTES: 14400
+      KAFKA_MESSAGE_MAX_BYTES: 25000000
+      KAFKA_REPLICA_FETCH_MAX_BYTES: 25485760
+#      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false"
     networks:
       - kafka_network
 
@@ -156,9 +166,18 @@ services:
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://FXWVRN2:4603
       KAFKA_LOG_DIR: /var/lib/kafka/data
       KAFKA_UNCLEAN_LEADER_ELECTION_ENABLE: "false"
+      KAFKA_ZOOKEEPER_SESSION_TIMEOUT_MS: 30000
+      KAFKA_MIN_INSYNC_REPLICAS: 2
+      KAFKA_DEFAULT_REPLICATION_FACTOR: 3
+      KAFKA_LOG_RETENTION_HOURS: 48
+      KAFKA_OFFSETS_RETENTION_MINUTES: 14400
+      KAFKA_MESSAGE_MAX_BYTES: 25000000
+      KAFKA_REPLICA_FETCH_MAX_BYTES: 25485760
+#      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false"
     networks:
       - kafka_network
-
+  
+# https://github.com/confluentinc/schema-registry/blob/93c0297b11ccc755e232ba77de87f88819ee3958/core/src/main/java/io/confluent/kafka/schemaregistry/rest/SchemaRegistryConfig.java
   schema-1:
     image: confluentinc/cp-schema-registry:5.1.0
     container_name: schema-1
@@ -176,9 +195,11 @@ services:
       SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: zookeeper-1:22181,zookeeper-2:22181,zookeeper-3:22181
       SCHEMA_REGISTRY_HOST_NAME: schema-1
       SCHEMA_REGISTRY_LISTENERS: 'http://schema-1:5601'
+      SCHEMA_REGISTRY_KAFKASTORE_TOPIC_REPLICATION_FACTOR: 3
+#      SCHEMA_REGISTRY_HOST: schema?
     networks:
       - kafka_network
-      
+
   schema-2:
     image: confluentinc/cp-schema-registry:5.1.0
     container_name: schema-2
@@ -195,7 +216,8 @@ services:
     environment:
       SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: zookeeper-1:22181,zookeeper-2:22181,zookeeper-3:22181
       SCHEMA_REGISTRY_HOST_NAME: schema-2
-      SCHEMA_REGISTRY_LISTENERS: 'http://schema-1:5602'
+      SCHEMA_REGISTRY_LISTENERS: 'http://schema-2:5602'
+      SCHEMA_REGISTRY_KAFKASTORE_TOPIC_REPLICATION_FACTOR: 3
     networks:
       - kafka_network
 
@@ -215,9 +237,70 @@ services:
     environment:
       SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: zookeeper-1:22181,zookeeper-2:22181,zookeeper-3:22181
       SCHEMA_REGISTRY_HOST_NAME: schema-3
-      SCHEMA_REGISTRY_LISTENERS: 'http://schema-1:5603'
+      SCHEMA_REGISTRY_LISTENERS: 'http://schema-3:5603'
+      SCHEMA_REGISTRY_KAFKASTORE_TOPIC_REPLICATION_FACTOR: 3
     networks:
       - kafka_network
+
+################################## below are not required for app to run ##########################################################
+  kafka-rest:
+    image: confluentinc/cp-kafka-rest:5.1.0
+    container_name: kafka-rest
+    depends_on:
+      - zookeeper-1
+      - zookeeper-2
+      - zookeeper-3
+      - kafka-1
+      - kafka-2
+      - kafka-3
+      - schema-1
+      - schema-2
+      - schema-3
+    restart: always
+    ports:
+      - "6601:6601"
+    environment:
+      KAFKA_REST_ZOOKEEPER_CONNECT: zookeeper-1:22181,zookeeper-2:22181,zookeeper-3:22181
+      KAFKA_REST_HOST_NAME: kafka-rest      
+      KAFKA_REST_LISTENERS: http://0.0.0.0:6601
+      KAFKA_REST_SCHEMA_REGISTRY_URL: http://schema-1:5601   
+      KAFKA_REST_BOOTSTRAP_SERVERS: PLAINTEXT://FXWVRN2:4601
+    networks:
+      - kafka_network
+
+  kafka-topics-ui:
+    image: landoop/kafka-topics-ui:0.9.4
+    container_name: kafka-topics-ui
+    depends_on:
+      - kafka-rest
+    ports:
+    - "8601:8000"
+    environment:
+      KAFKA_REST_PROXY_URL: "http://kafka-rest:6601"
+      PROXY: "true"
+    networks:
+      - kafka_network
+
+  schema-registry-ui:
+    image: landoop/schema-registry-ui:0.9.5 
+    container_name: schema-registry-ui
+    depends_on:
+      - schema-1
+      - schema-2
+      - schema-3
+    ports:
+    - "7601:8000"
+    environment:
+      SCHEMAREGISTRY_URL: "http://schema-1:5601" 
+      ALLOW_GLOBAL: 1 
+      ALLOW_TRANSITIVE: 1
+      ALLOW_DELETION: 1
+      PROXY: "true"
+    networks:
+      - kafka_network
+      
+
+
 
 networks:
   kafka_network:
