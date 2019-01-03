@@ -119,7 +119,7 @@ kafka-consumer-groups --bootstrap-server FXWVRN2:4601 --group my-test-app --topi
 
 Run cp-schema-registry container:
 ```
-docker run -it --net=confluent --rm confluentinc/cp-schema-registry:5.1.0 bash
+docker run -it confluentinc/cp-schema-registry:5.1.0 bash
 ```
 Add schema:
 ```
