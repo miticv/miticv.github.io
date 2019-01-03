@@ -123,8 +123,5 @@ docker run -it --net=confluent --rm confluentinc/cp-schema-registry:5.1.0 bash
 ```
 Add schema:
 ```
-# /usr/bin/kafka-avro-console-producer \
-  --broker-list FXWVRN2:4601 --topic myTopic \
-  --property schema.registry.url=http://FXWVRN2:5601 \
-  --property value.schema='{"type":"record","name":"myrecord","fields":[{"name":"f1","type":"string"}]}'
+kafka-avro-console-producer --broker-list FXWVRN2:4601 --topic OmegaExternalEntryPointReceived --property schema.registry.url=http://FXWVRN2:5601 --property value.schema='{"name":"OmegaExternalEntryPointReceived","type":"record","namespace":"Omega","doc":"This is a Avro schema for incoming requests from AMP","fields":[{"name":"Request","type":"string"},{"name":"CorrelationID","type":"string"},{"name":"RequestTimeStamp","type":"string"}]}'
 ```
